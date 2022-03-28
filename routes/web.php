@@ -20,14 +20,26 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'DashboardController@index')->name('admin.dashboard');
 
-    Route::get('user', 'UserController@index')->name('admin.user');
-    Route::get('user/create', 'UserController@create')->name('admin.create');
-    Route::post('user/create', 'UserController@store')->name('admin.store');
-    Route::get('user/{user}', 'UserController@edit')->name('admin.edit');
-    Route::put('user/{user}', 'UserController@update')->name('admin.update');
-    Route::delete('user', 'UserController@destroy')->name('admin.destroy');
-
+    Route::get('user', 'UserController@index')->name('user');
+    Route::get('user/create', 'UserController@create')->name('user.create');
+    Route::post('user/create', 'UserController@store')->name('user.store');
+    Route::get('user/{user}', 'UserController@edit')->name('user.edit');
+    Route::put('user/{user}', 'UserController@update')->name('user.update');
+    Route::delete('user', 'UserController@destroy')->name('user.delete');
     
+    Route::get('depot', 'DepotController@index')->name('depot');
+    Route::get('depot/create', 'DepotController@create')->name('depot.create');
+    Route::post('depot/create', 'DepotController@store')->name('depot.store');
+    Route::get('depot/{depot}', 'DepotController@edit')->name('depot.edit');
+    Route::put('depot/{depot}', 'DepotController@update')->name('depot.update');
+    Route::delete('depot', 'DepotController@destroy')->name('depot.delete');
+    
+    Route::get('karyawan', 'KaryawanController@index')->name('karyawan');
+    Route::get('karyawan/create', 'KaryawanController@create')->name('karyawan.create');
+    Route::post('karyawan/create', 'KaryawanController@store')->name('karyawan.store');
+    Route::get('karyawan/{karyawan}', 'KaryawanController@edit')->name('karyawan.edit');
+    Route::put('karyawan/{karyawan}', 'KaryawanController@update')->name('karyawan.update');
+    Route::delete('karyawan', 'KaryawanController@destroy')->name('karyawan.delete');
 });
 
 Auth::routes();

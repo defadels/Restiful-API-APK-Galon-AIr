@@ -13,20 +13,13 @@
 								<ol class="breadcrumb mb-0 p-0">
 									<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
 									</li>
-									<li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
+									<li class="breadcrumb-item active" aria-current="page">Data User</li>
 								</ol>
 							</nav>
 						</div>
 						<div class="ml-auto">
 							<div class="btn-group">
-								<button type="button" class="btn btn-primary">Settings</button>
-								<button type="button" class="btn btn-primary bg-split-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">	<span class="sr-only">Toggle Dropdown</span>
-								</button>
-								<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">	<a class="dropdown-item" href="javascript:;">Action</a>
-									<a class="dropdown-item" href="javascript:;">Another action</a>
-									<a class="dropdown-item" href="javascript:;">Something else here</a>
-									<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-								</div>
+								<a href="{{route('admin.user.create')}}" class="btn btn-primary">+ User</a> 
 							</div>
 						</div>
 					</div>
@@ -34,7 +27,7 @@
 					<div class="card radius-15">
 						<div class="card-body">
 							<div class="card-title">
-								<h4 class="mb-0">Basic Table</h4>
+								<h4 class="mb-0">Data User</h4>
 							</div>
 							<hr/>
 							<div class="table-responsive">
@@ -42,33 +35,35 @@
 									<thead>
 										<tr>
 											<th scope="col">#</th>
-											<th scope="col">First</th>
-											<th scope="col">Last</th>
-											<th scope="col">Handle</th>
+											<th scope="col">Nama</th>
+											<th scope="col">Email</th>
+											<th scope="col">Nomor Handphone</th>
+											<th scope="col">Aksi</th>
 										</tr>
 									</thead>
+							@if($users->total())		
 									<tbody>
+										@foreach($users as $user)
+
 										<tr>
 											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
+											<td>{{$user->nama}}</td>
+											<td>{{$user->email}}</td>
+											<td>{{$user->nomor_hp}}</td>
+											<td>
+												<a href="{{route('admin.user.edit',$user->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
+											</td>
 										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
+										@endforeach
 									</tbody>
 								</table>
+
+								{{$users->links()}}	
+								@else 
+									<h4 class="text-center p-3">Data user kosong</h4>
+								@endif
 							</div>
+						
 						</div>
 					</div>
 

@@ -22,7 +22,7 @@
         </li>
         <li class="menu-label">Web Apps</li>
         <li>
-            <a href="emailbox.html">
+            <a href="{{ route('admin.depot') }}">
                 <div class="parent-icon icon-color-7"><i class="bx bx-water"></i>
                 </div>
                 <div class="menu-title">Depot</div>
@@ -49,14 +49,14 @@
         </li>
         <li class="menu-label">Otentikasi</li>
         <li>
-            <a href="emailbox.html">
+            <a href="{{ route('admin.karyawan') }}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-user"></i>
                 </div>
                 <div class="menu-title">Data Karyawan</div>
             </a>
         </li>
         <li>
-            <a href="emailbox.html">
+            <a href="{{ route('admin.user') }}">
                 <div class="parent-icon icon-color-7"><i class="bx bx-group"></i>
                 </div>
                 <div class="menu-title">Data User</div>

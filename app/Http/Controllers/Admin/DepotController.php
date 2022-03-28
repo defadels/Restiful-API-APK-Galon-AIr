@@ -4,25 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use Validator;
 
-
-class UserController extends Controller
+class DepotController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $users)
+    public function index()
     {
-
-        $users = User::paginate(10);
-
-        $title = "Halaman User";
-
-        return view('admin.user.index',compact('users','title'));
+        $title = 'Halaman depot';
+        
+        return view('admin.depot.index',['title' => $title]);
     }
 
     /**
@@ -32,13 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $title = "Tambah data user";
-
-        $button = "Update";
-
-        $url = 'admin.user.update';
-
-        return view('admin.user.form', compact('title','button','url'));
+        //
     }
 
     /**
@@ -69,13 +57,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
-    {   
-        $button = "Update";
-
-        $url = 'admin.user.update';
-
-        return view('admin.user.form', compact('button','url','user'));
+    public function edit($id)
+    {
+        //
     }
 
     /**
