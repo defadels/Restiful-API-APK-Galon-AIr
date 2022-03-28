@@ -3,7 +3,11 @@
 @section('title', 'Halaman Data User')
 
 @section('content')
-			<div class="page-content-wrapper">
+
+<div class="page-content-wrapper">
+	
+	@include('layout.admin.error')
+
 				<div class="page-content">
 					<!--breadcrumb-->
 					<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
@@ -31,6 +35,7 @@
 							</div>
 							<hr/>
 							<div class="table-responsive">
+							@if($users->total())		
 								<table class="table mb-0">
 									<thead>
 										<tr>
@@ -41,7 +46,6 @@
 											<th scope="col">Aksi</th>
 										</tr>
 									</thead>
-							@if($users->total())		
 									<tbody>
 										@foreach($users as $user)
 
@@ -57,11 +61,13 @@
 										@endforeach
 									</tbody>
 								</table>
+									
 
 								{{$users->links()}}	
 								@else 
 									<h4 class="text-center p-3">Data user kosong</h4>
 								@endif
+							
 							</div>
 						
 						</div>

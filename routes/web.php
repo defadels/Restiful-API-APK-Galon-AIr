@@ -25,7 +25,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::post('user/create', 'UserController@store')->name('user.store');
     Route::get('user/{user}', 'UserController@edit')->name('user.edit');
     Route::put('user/{user}', 'UserController@update')->name('user.update');
-    Route::delete('user', 'UserController@destroy')->name('user.delete');
+    Route::delete('user/{user}', 'UserController@destroy')->name('user.delete');
     
     Route::get('depot', 'DepotController@index')->name('depot');
     Route::get('depot/create', 'DepotController@create')->name('depot.create');

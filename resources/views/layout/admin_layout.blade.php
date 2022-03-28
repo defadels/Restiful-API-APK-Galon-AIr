@@ -40,6 +40,7 @@
 		<!--page-wrapper-->
 		<div class="page-wrapper">
 			<!--page-content-wrapper-->
+			
 			@yield('content')
 			<!--end page-content-wrapper-->
 		</div>

@@ -34,9 +34,9 @@ class UserController extends Controller
     {
         $title = "Tambah data user";
 
-        $button = "Update";
+        $button = "Simpan";
 
-        $url = 'admin.user.update';
+        $url = 'admin.user.store';
 
         return view('admin.user.form', compact('title','button','url'));
     }
@@ -96,8 +96,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        try {
+            $nama = $user->nama;
+
+            $user->delete();
+        }catch(Exception $e) {
+
+            return redirect()->route('admin.user')
+            ->with('error',__('pesan.error', ['module' => $nama]));
+        }
+            return redirect()->route('admin.user')
+            ->with('message',__('pesan.delete', ['module' => $nama]));
     }
 }

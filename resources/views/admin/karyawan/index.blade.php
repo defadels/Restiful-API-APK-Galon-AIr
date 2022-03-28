@@ -3,8 +3,7 @@
 @section('title', 'Halaman Data User')
 
 @section('content')
-			<div class="page-content-wrapper">
-				<div class="page-content">
+	
 					<!--breadcrumb-->
 					<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
 						<div class="breadcrumb-title pr-3">Tables</div>
@@ -71,9 +70,6 @@
 							</div>
 						</div>
 					</div>
-
-				</div>
-			</div>
 
 
 @endsection

@@ -33,27 +33,59 @@
 								<h4 class="mb-0">Tambah Data User</h4>
 							</div>
 							<hr/>
-						<form action="">
+						<form action="{{$url, $user->id ?? ''}}" method="post" enctype="multipart/form-data">
                             @csrf
                             
+                            @if(isset($user))
+                             @method('put')
+                            @endif
+
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="">
+                                <input type="text" name="nama" value="{{old('nama') ?? $user->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" id="">
+                                @error('nama')
+                                @foreach($errors->all() as $error)
+                                <span class="text-danger">
+                                    {{$error}}
+                                </span>
+                                @endforeach
+                                @enderror
                             </div>
                             
                             <div class="form-group">
                                 <label for="nomor_hp">Nomor Handphone</label>
-                                <input type="text" name="nama" class="form-control" id="">
+                                <input type="text" name="nomor_hp" value="{{old('nomor_hp') ?? $user->nomor_hp ?? ''}}" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="">
+                                @error('nomor_hp')
+                                    @foreach($errors->all() as $error)
+                                    <span class="text-danger">
+                                        {{$error}}
+                                    </span>
+                                    @endforeach
+                                @enderror
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="">
+                                <input type="email" name="email" value="{{old('email') ?? $user->email ?? ''}}" class="form-control @error('email') {{ 'is-invalid' }} @enderror" id="">
+                                @error('email')
+                                    @foreach($errors->all() as $error)
+                                    <span class="text-danger">
+                                        {{$error}}
+                                    </span>
+                                    @endforeach
+                                @enderror
                             </div>
                             
                             <div class="form-group">
                                 <label for="passowrd">Password</label>
-                                <input type="passowrd" name="password" class="form-control" id="">
+                                <input type="passowrd" name="password" placeholder="Ketik jika ingin diubah" class="form-control" id="">
+                                @error('password')
+                                    @foreach($errors->all() as $error)
+                                    <span class="text-danger">
+                                        {{$error}}
+                                    </span>
+                                    @endforeach
+                                @enderror
                             </div>
                             
                             <div class="form-group">
