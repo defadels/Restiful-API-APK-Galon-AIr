@@ -17,7 +17,7 @@
 								<ol class="breadcrumb mb-0 p-0">
 									<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
 									</li>
-									<li class="breadcrumb-item active" aria-current="page">Data Depot</li>
+									<li class="breadcrumb-item active" aria-current="page">Data User</li>
 								</ol>
 							</nav>
 						</div>
@@ -31,7 +31,7 @@
 					<div class="card radius-15">
 						<div class="card-body">
 							<div class="card-title">
-								<h4 class="mb-0">Data Depot</h4>
+								<h4 class="mb-0">Data User</h4>
 							</div>
 							<hr/>
 							<div class="table-responsive">
@@ -65,7 +65,7 @@
 
 								{{$users->links()}}	
 								@else 
-									<h4 class="text-center p-3">Data depot kosong</h4>
+									<h4 class="text-center p-3">Data user kosong</h4>
 								@endif
 							
 							</div>

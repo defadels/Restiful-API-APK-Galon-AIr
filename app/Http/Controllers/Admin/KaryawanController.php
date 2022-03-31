@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KaryawanController extends Controller
 {
@@ -16,7 +17,9 @@ class KaryawanController extends Controller
     {
         $title = 'Halaman data karyawan';
 
-        return view('admin.karyawan.index',['title' => $title]);
+        $users = User::paginate(10);
+
+        return view('admin.karyawan.index',compact('users','title'));
     }
 
     /**

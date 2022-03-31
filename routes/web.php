@@ -42,6 +42,10 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::delete('karyawan', 'KaryawanController@destroy')->name('karyawan.delete');
 });
 
+Auth::routes(['verify' => true]);
+ 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
