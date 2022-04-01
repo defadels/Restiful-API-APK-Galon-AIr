@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -49,7 +50,47 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'nama' => ['required','max:50'],
+            'email' => ['required','unique:users,email'],
+            'password' => ['required'],
+            'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13']
+        ];
+
+        $message = [
+            'nama.required' => 'Nama wajib diisi',
+            'nama.max' => 'Nama maksimal 50 karakter',
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Passowrd wajib diisi',
+            'nomor_hp.required' => 'Nomor handphone wajib diisi',
+            'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016',
+            'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',  
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        if($validate->fails()) {
+            return redirect()->route('admin.user.create')
+            ->withErrors($validate)
+            ->withInput();
+
+        } else {
+
+            $user = User::create([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'nomor_hp' => $request->nomor_hp,
+                'jenis' => "user"
+            ]);
+    
+            $nama = $user->nama;
+    
+            return redirect()->route('admin.user')->with('message',__('pesan.create', ['module' => $nama]));
+        }
+      
     }
 
     /**

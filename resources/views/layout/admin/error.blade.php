@@ -1,4 +1,4 @@
-@if ($errors->any())
+{{-- @if ($errors->any())
                     @foreach ($errors->all() as $error)
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">Error</h4>
@@ -7,7 +7,7 @@
                         </p>
                     </div>
                     @endforeach
-@endif
+@endif --}}
 
 @if(session()->has('message'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
