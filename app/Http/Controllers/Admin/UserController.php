@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index(User $users)
     {
 
-        $users = User::paginate(10);
+        $users = User::whereIn('jenis', ['user'])->paginate(10);
 
         $title = "Halaman User";
 

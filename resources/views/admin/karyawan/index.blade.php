@@ -23,7 +23,7 @@
 						</div>
 						<div class="ml-auto">
 							<div class="btn-group">
-								<a href="{{route('admin.user.create')}}" class="btn btn-primary">+ User</a> 
+								<a href="{{route('admin.karyawan.create')}}" class="btn btn-primary">+ Karyawan</a> 
 							</div>
 						</div>
 					</div>
@@ -43,6 +43,7 @@
 											<th scope="col">Nama</th>
 											<th scope="col">Email</th>
 											<th scope="col">Nomor Handphone</th>
+											<th scope="col">Jenis</th>
 											<th scope="col">Aksi</th>
 										</tr>
 									</thead>
@@ -50,10 +51,11 @@
 										@foreach($users as $user)
 
 										<tr>
-											<th scope="row">1</th>
+											<th scope="row">{{($users->currentPage()- 1) * $users->perPage() + $loop->iteration}}</th>
 											<td>{{$user->nama}}</td>
 											<td>{{$user->email}}</td>
 											<td>{{$user->nomor_hp}}</td>
+											<td><button class="btn btn-sm @if($user->jenis == 'admin') {{'btn-primary'}} @else {{'btn-secondary'}} @endif">{{$user->jenis}}</button></td>
 											<td>
 												<a href="{{route('admin.user.edit',$user->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
 											</td>
