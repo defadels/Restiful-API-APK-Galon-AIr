@@ -50,7 +50,7 @@
 										@foreach($users as $user)
 
 										<tr>
-											<th scope="row">1</th>
+											<th scope="row">{{($users->currentPage()- 1) * $users->perPage() + $loop->iteration}}</th>
 											<td>{{$user->nama}}</td>
 											<td>{{$user->email}}</td>
 											<td>{{$user->nomor_hp}}</td>

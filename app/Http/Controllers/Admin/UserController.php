@@ -71,6 +71,7 @@ class UserController extends Controller
 
         $validate = Validator::make($input, $rules, $message)->validate();
 
+        /*
         if($validate->fails()) {
             return redirect()->route('admin.user.create')
             ->withErrors($validate)
@@ -90,6 +91,20 @@ class UserController extends Controller
     
             return redirect()->route('admin.user')->with('message',__('pesan.create', ['module' => $nama]));
         }
+        */
+
+
+        $user = User::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'nomor_hp' => $request->nomor_hp,
+            'jenis' => "user"
+        ]);
+
+        $nama = $user->nama;
+
+        return redirect()->route('admin.user')->with('message',__('pesan.create', ['module' => $nama]));
       
     }
 
