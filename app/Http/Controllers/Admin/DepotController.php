@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Depot;
+use Validator;
+
 
 class DepotController extends Controller
 {
@@ -15,8 +18,10 @@ class DepotController extends Controller
     public function index()
     {
         $title = 'Halaman depot';
+
+        $daftar_depot = Depot::paginate(10);
         
-        return view('admin.depot.index',['title' => $title]);
+        return view('admin.depot.index',compact('title','daftar_depot'));
     }
 
     /**

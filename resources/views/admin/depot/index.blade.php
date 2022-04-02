@@ -23,7 +23,7 @@
 						</div>
 						<div class="ml-auto">
 							<div class="btn-group">
-								<a href="{{route('admin.user.create')}}" class="btn btn-primary">+ User</a> 
+								<a href="{{route('admin.depot.create')}}" class="btn btn-primary">+ Depot</a> 
 							</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 							</div>
 							<hr/>
 							<div class="table-responsive">
-							@if($users->total())		
+							@if($daftar_depot->total())		
 								<table class="table mb-0">
 									<thead>
 										<tr>
@@ -47,15 +47,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach($users as $user)
+										@foreach($daftar_depot as $depot)
 
 										<tr>
 											<th scope="row">1</th>
-											<td>{{$user->nama}}</td>
-											<td>{{$user->email}}</td>
-											<td>{{$user->nomor_hp}}</td>
+											<td>{{$depot->nama}}</td>
+											<td>{{$depot->email}}</td>
+											<td>{{$depot->nomor_hp}}</td>
 											<td>
-												<a href="{{route('admin.user.edit',$user->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
+												<a href="{{route('admin.depot.edit',$depot->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
+												<a href="" title="Order" class="btn btn-sm btn-danger"><i class="bx bx-cart"></i></a>
 											</td>
 										</tr>
 										@endforeach
@@ -63,7 +64,7 @@
 								</table>
 									
 
-								{{$users->links()}}	
+								{{$daftar_depot->links()}}	
 								@else 
 									<h4 class="text-center p-3">Data depot kosong</h4>
 								@endif
