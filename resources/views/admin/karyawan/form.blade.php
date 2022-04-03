@@ -33,16 +33,16 @@
 								<h4 class="mb-0">Tambah Data Karyawan</h4>
 							</div>
 							<hr/>
-						<form action="{{route($url, $user->id ?? '')}}" method="post">
+						<form action="{{route($url, $karyawan->id ?? '')}}" method="post">
                             @csrf
                             
-                            @if(isset($user))
+                            @if(isset($karyawan))
                              @method('put')
                             @endif
 
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" value="{{old('nama') ?? $user->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" id="">
+                                <input type="text" name="nama" value="{{old('nama') ?? $karyawan->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" id="">
                                 @error('nama')
                                
                                 <span class="text-danger">
@@ -54,7 +54,7 @@
                             
                             <div class="form-group">
                                 <label for="nomor_hp">Nomor Handphone</label>
-                                <input type="text" name="nomor_hp" value="{{old('nomor_hp') ?? $user->nomor_hp ?? ''}}" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="">
+                                <input type="text" name="nomor_hp" value="{{old('nomor_hp') ?? $karyawan->nomor_hp ?? ''}}" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="">
                                 @error('nomor_hp')
                                     
                                     <span class="text-danger">
@@ -66,7 +66,7 @@
                             
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" value="{{old('email') ?? $user->email ?? ''}}" class="form-control @error('email') {{ 'is-invalid' }} @enderror" id="">
+                                <input type="email" name="email" value="{{old('email') ?? $karyawan->email ?? ''}}" class="form-control @error('email') {{ 'is-invalid' }} @enderror" id="">
                                 @error('email')
                                  
                                     <span class="text-danger">
@@ -78,7 +78,7 @@
                             
                             <div class="form-group">
                                 <label for="passowrd">Password</label>
-                                <input type="password" name="password" @if(isset($user))placeholder="Ketik jika ingin diubah"@endif class="form-control" id="">
+                                <input type="password" name="password" @if(isset($karyawan))placeholder="Ketik jika ingin diubah"@endif class="form-control" id="">
                                 @error('password')
                                    
                                     <span class="text-danger">

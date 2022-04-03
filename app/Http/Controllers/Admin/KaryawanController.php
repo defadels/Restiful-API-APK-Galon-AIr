@@ -36,13 +36,9 @@ class KaryawanController extends Controller
         $button = "Simpan";
 
         $url = 'admin.karyawan.store';
+    
 
-        $daftar_jenis = [
-            'admin' => 'Admin',
-            'editor' => 'Editor'
-        ];
-
-        return view('admin.karyawan.form', compact('title','button','url','daftar_jenis'));
+        return view('admin.karyawan.form', compact('title','button','url'));
     }
 
     /**
@@ -76,7 +72,7 @@ class KaryawanController extends Controller
 
         $validate = Validator::make($input, $rules, $message)->validate();
 
-        $user = User::create([
+        $karyawan = User::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -84,9 +80,10 @@ class KaryawanController extends Controller
             'jenis' => $request->jenis,
         ]);
 
-        $nama = $user->nama;
+        $nama = $karyawan->nama;
 
-        return redirect()->route('admin.karyawan')->with('message',__('pesan.create', ['module' => $nama]));
+        return redirect()->route('admin.karyawan')
+        ->with('message',__('pesan.create', ['module' => $nama]));
     }
 
     /**
@@ -106,13 +103,13 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $karyawan)
     {
         $button = "Update";
 
-        $url = 'admin.user.update';
+        $url = 'admin.karyawan.update';
 
-        return view('admin.karyawan.form', compact('button','url','user'));
+        return view('admin.karyawan.form', compact('button','url','karyawan'));
     }
 
     /**
@@ -122,9 +119,43 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $karyawan)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'nama' => ['required','max:50'],
+            'email' => ['required','unique:users,email,'.$karyawan->id],
+            'password' => ['nullable'],
+            'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13'],
+            'jenis' => ['required']
+        ];
+
+        $message = [
+            'nama.required' => 'Nama wajib diisi',
+            'nama.max' => 'Nama maksimal 50 karakter',
+            'email.required' => 'Email wajib diisi',
+            'nomor_hp.required' => 'Nomor handphone wajib diisi',
+            'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016',
+            'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',
+            'jenis.required' => 'Jenis karyawan wajib dipilih'  
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        $karyawan->nama = $request->nama;
+        $karyawan->email = $request->email;
+        $karyawan->nomor_hp = $request->nomor_hp;
+        $karyawan->jenis = $request->jenis;
+        
+        if($request->has('passowrd') && $request->password != '' ) {
+            $karyawan->password = Hash::make($request->password);
+        }
+
+        $karyawan->save();
+
+        return redirect()->route('admin.karyawan')
+        ->with('message',__('pesan.update',['module' => $karyawan->nama]));
     }
 
     /**

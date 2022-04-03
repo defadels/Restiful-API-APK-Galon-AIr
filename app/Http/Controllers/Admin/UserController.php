@@ -141,9 +141,41 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'nama' => ['required','max:50'],
+            'email' => ['required','unique:users,email'],
+            'password' => ['required'],
+            'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13']
+        ];
+
+        $message = [
+            'nama.required' => 'Nama wajib diisi',
+            'nama.max' => 'Nama maksimal 50 karakter',
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Passowrd wajib diisi',
+            'nomor_hp.required' => 'Nomor handphone wajib diisi',
+            'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016',
+            'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',  
+        ];
+
+        
+        $user->nama = $request->nama;
+        $user->email = $request->email;
+        $user->nomor_hp = $request->nomor_hp;
+        
+        if($request->has('passowrd') && $request->password != '' ) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.user')
+        ->with('message',__('pesan.update',['module' => $user->nama]));
+        
     }
 
     /**

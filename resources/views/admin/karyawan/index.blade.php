@@ -57,7 +57,7 @@
 											<td>{{$user->nomor_hp}}</td>
 											<td><button class="btn btn-sm @if($user->jenis == 'admin') {{'btn-primary'}} @else {{'btn-secondary'}} @endif">{{$user->jenis}}</button></td>
 											<td>
-												<a href="{{route('admin.user.edit',$user->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
+												<a href="{{route('admin.karyawan.edit',$user->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
 											</td>
 										</tr>
 										@endforeach
