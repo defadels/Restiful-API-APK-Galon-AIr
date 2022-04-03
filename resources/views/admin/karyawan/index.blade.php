@@ -1,6 +1,6 @@
 @extends('layout.admin_layout')
 
-@section('title', 'Halaman Data User')
+@section('title', 'Halaman Data Karyawan')
 
 @section('content')
 

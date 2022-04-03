@@ -164,8 +164,18 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $karyawan)
     {
-        //
+        try {
+            $nama = $karyawan->nama;
+
+            $karyawan->delete();
+        }catch(Exception $e) {
+
+            return redirect()->route('admin.karyawan')
+            ->with('error',__('pesan.error', ['module' => $nama]));
+        }
+            return redirect()->route('admin.karyawan')
+            ->with('message',__('pesan.delete', ['module' => $nama]));
     }
 }

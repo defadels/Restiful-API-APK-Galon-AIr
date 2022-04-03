@@ -17,7 +17,7 @@
 								</ol>
 							</nav>
 						</div>
-                        @if(isset($user))
+                        @if(isset($karyawan))
 						<div class="ml-auto">
 							<div class="btn-group">
 								<button data-toggle="modal" data-target="#deleteModal" class="btn btn-md radius-30 btn-danger">
@@ -30,8 +30,12 @@
 					<div class="card radius-15">
 						<div class="card-body">
 							<div class="card-title">
+                               @if(isset($karyawan)) 
+                               <h4 class="mb-0">Ubah Data Karyawan</h4>
+                                    @else
 								<h4 class="mb-0">Tambah Data Karyawan</h4>
-							</div>
+                                @endif
+                            </div>
 							<hr/>
 						<form action="{{route($url, $karyawan->id ?? '')}}" method="post">
                             @csrf
@@ -115,7 +119,7 @@
 				</div>
 			</div>
 
-            @if(isset($user))
+            @if(isset($karyawan))
                 <!-- modal -->
                 <div class="modal fade" id="deleteModal">
                     <div class="modal-dialog">
@@ -130,7 +134,7 @@
                                 </p>  
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('admin.karyawan.delete', $user->id ?? '') }}" method="post">
+                                <form action="{{ route('admin.karyawan.delete', $karyawan->id ?? '') }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>

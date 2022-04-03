@@ -30,7 +30,11 @@
 					<div class="card radius-15">
 						<div class="card-body">
 							<div class="card-title">
+                               @if(isset($user)) 
+								<h4 class="mb-0">Ubah Data User</h4>
+                               @else 
 								<h4 class="mb-0">Tambah Data User</h4>
+                               @endif 
 							</div>
 							<hr/>
 						<form action="{{ route($url, $user->id ?? '')}}" method="post">
