@@ -95,8 +95,8 @@
                             <div class="form-group">
                                 <label for="jenis">Jenis</label>
                                 <select name="jenis" class="form-control @error('jenis') {{ 'is-invalid' }} @enderror">
-                                    <option value="admin">Admin</option>
-                                    <option value="editor">Editor</option>
+                                    <option value="admin" @if(isset($karyawan)) {{ $karyawan->jenis == "admin" ? 'selected' : '' }} @endif >Admin</option>
+                                    <option value="editor" @if(isset($karyawan)) {{ $karyawan->jenis == "editor" ? 'selected' : '' }} @endif >Editor</option>
                                 </select>
                                 @error('jenis')
                                     

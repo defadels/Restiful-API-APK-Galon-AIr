@@ -13,7 +13,7 @@
     <ul class="metismenu" id="menu">
         <li>
            
-                <a href="emailbox.html">
+                <a href="{{ route('admin.dashboard') }}">
                     <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                     </div>
                     <div class="menu-title">Dashboard</div>

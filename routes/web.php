@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
-    Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::get('user', 'UserController@index')->name('user');
     Route::get('user/create', 'UserController@create')->name('user.create');
