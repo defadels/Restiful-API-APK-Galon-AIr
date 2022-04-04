@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Depot;
 use Validator;
+use Image;
 
 
 class DepotController extends Controller
@@ -31,7 +32,13 @@ class DepotController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Halaman tambah depot';
+
+        $url = 'admin.depot.store';
+
+        $button = 'Simpan';
+
+        return view('admin.depot.form',compact('title','url','button'));
     }
 
     /**
@@ -62,9 +69,15 @@ class DepotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Depot $depot)
     {
-        //
+        $title = 'Edit data depot';
+
+        $button = 'Update';
+
+        $url = 'admin.depot.update';
+
+        return view('admin.depot.form',compact('title','depot','button','url'));
     }
 
     /**
