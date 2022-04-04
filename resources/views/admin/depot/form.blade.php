@@ -65,9 +65,45 @@
                             </div>
                             
                             <div class="form-group">
+                                <label for="harga_ambil">Harga Ambil</label>
+                                <input type="number" name="harga_ambil" value="{{old('harga_ambil') ?? $depot->harga_ambil ?? ''}}" class="form-control @error('harga_ambil') {{ 'is-invalid' }} @enderror" id="">
+                                @error('harga_ambil')
+                                @foreach($errors->all() as $error)
+                                <span class="text-danger">
+                                    {{$error}}
+                                </span>
+                                @endforeach
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="harga_jemput">Harga Jemput</label>
+                                <input type="number" name="harga_jemput" value="{{old('harga_jemput') ?? $depot->harga_jemput ?? ''}}" class="form-control @error('harga_jemput') {{ 'is-invalid' }} @enderror" id="">
+                                @error('harga_jemput')
+                                @foreach($errors->all() as $error)
+                                <span class="text-danger">
+                                    {{$error}}
+                                </span>
+                                @endforeach
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
                                 <label for="nomor_hp">Nomor Handphone</label>
                                 <input type="text" name="nomor_hp" value="{{old('nomor_hp') ?? $depot->nomor_hp ?? ''}}" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="">
                                 @error('nomor_hp')
+                                    @foreach($errors->all() as $error)
+                                    <span class="text-danger">
+                                        {{$error}}
+                                    </span>
+                                    @endforeach
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <textarea name="alamat" id="" cols="20" rows="5" class="form-control @error('alamat') {{ 'is-invalid' }} @enderror">{{old('alamat') ?? $depot->alamat ?? ''}}</textarea>
+                                @error('alamat')
                                     @foreach($errors->all() as $error)
                                     <span class="text-danger">
                                         {{$error}}
@@ -90,7 +126,7 @@
                             
                             <div class="form-group">
                                 <label for="passowrd">Password</label>
-                                <input type="passowrd" name="password" placeholder="Ketik jika ingin diubah" class="form-control" id="">
+                                <input type="password" name="password" @if(isset($depot))placeholder="Ketik jika ingin diubah"@endif class="form-control" id="">
                                 @error('password')
                                     @foreach($errors->all() as $error)
                                     <span class="text-danger">
