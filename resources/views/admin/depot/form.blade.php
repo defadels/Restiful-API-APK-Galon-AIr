@@ -33,7 +33,7 @@
 								<h4 class="mb-0">Tambah Data Depot</h4>
 							</div>
 							<hr/>
-						<form action="{{$url, $depot->id ?? ''}}" method="post" enctype="multipart/form-data">
+						<form action="{{route($url, $depot->id ?? '')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             
                             @if(isset($depot))

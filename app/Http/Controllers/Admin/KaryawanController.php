@@ -148,7 +148,7 @@ class KaryawanController extends Controller
         $karyawan->nomor_hp = $request->nomor_hp;
         $karyawan->jenis = $request->jenis;
         
-        if($request->has('passowrd') && $request->password != '' ) {
+        if($request->has('password') && $request->password != '' ) {
             $karyawan->password = Hash::make($request->password);
         }
 

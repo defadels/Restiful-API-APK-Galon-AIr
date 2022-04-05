@@ -167,7 +167,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->nomor_hp = $request->nomor_hp;
         
-        if($request->has('passowrd') && $request->password != '' ) {
+        if($request->has('password') && $request->password != '' ) {
             $user->password = Hash::make($request->password);
         }
 

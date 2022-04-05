@@ -1,6 +1,6 @@
 @extends('layout.admin_layout')
 
-@section('title', 'Halaman Data User')
+@section('title', 'Halaman Data Depot')
 
 @section('content')
 
@@ -39,10 +39,9 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
+											<th scope="col">Logo</th>
 											<th scope="col">Nama</th>
-											<th scope="col">Email</th>
-											<th scope="col">Nomor Handphone</th>
+											<th scope="col">Alamat</th>
 											<th scope="col">Aksi</th>
 										</tr>
 									</thead>
@@ -50,13 +49,12 @@
 										@foreach($daftar_depot as $depot)
 
 										<tr>
-											<th scope="row">1</th>
+											<th style="max-width:70px;" scope="row"><img src="{{Storage::url($depot->logo)}}" class="img-fluid" alt="{{$depot->logo}}" srcset=""></th>
 											<td>{{$depot->nama}}</td>
-											<td>{{$depot->email}}</td>
-											<td>{{$depot->nomor_hp}}</td>
+											<td>{{$depot->alamat}}</td>
 											<td>
 												<a href="{{route('admin.depot.edit',$depot->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
-												<a href="" title="Order" class="btn btn-sm btn-danger"><i class="bx bx-cart"></i></a>
+												<a href="" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
 											</td>
 										</tr>
 										@endforeach
