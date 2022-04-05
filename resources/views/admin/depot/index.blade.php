@@ -49,7 +49,7 @@
 										@foreach($daftar_depot as $depot)
 
 										<tr>
-											<th style="max-width:70px;" scope="row"><img src="{{Storage::url($depot->logo)}}" class="img-fluid" alt="{{$depot->logo}}" srcset=""></th>
+											<th style="max-width:70px;" scope="row"><img src="{{Storage::url($depot->logo)}}" class="img-fluid rounded-circle" alt="{{$depot->logo}}" srcset=""></th>
 											<td>{{$depot->nama}}</td>
 											<td>{{$depot->alamat}}</td>
 											<td>
