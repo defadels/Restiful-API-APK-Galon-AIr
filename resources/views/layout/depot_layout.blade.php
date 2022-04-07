@@ -32,10 +32,10 @@
 	<!-- wrapper -->
 	<div class="wrapper">
 		<!--sidebar-wrapper-->
-		@include('layout.admin.menu')
+		@include('layout.editor.menu')
 		<!--end sidebar-wrapper-->
 		<!--header-->
-		@include('layout.admin.header')
+		@include('layout.editor.header')
 		<!--end header-->
 		<!--page-wrapper-->
 		<div class="page-wrapper">
@@ -51,7 +51,7 @@
 		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 		<!--End Back To Top Button-->
 		<!--footer -->
-		@include('layout.admin.footer')
+		@include('layout.editor.footer')
 		<!-- end footer -->
 	</div>
 	<!-- end wrapper -->

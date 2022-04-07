@@ -13,7 +13,7 @@
     <ul class="metismenu" id="menu">
         <li>
            
-                <a href="{{ route('admin.dashboard') }}">
+                <a href="{{ route('editor.dashboard') }}">
                     <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                     </div>
                     <div class="menu-title">Dashboard</div>
@@ -22,7 +22,7 @@
         </li>
         <li class="menu-label">Web Apps</li>
         <li>
-            <a href="{{ route('admin.depot') }}">
+            <a href="{{ route('editor.depot') }}">
                 <div class="parent-icon icon-color-7"><i class="bx bx-water"></i>
                 </div>
                 <div class="menu-title">Depot</div>
@@ -49,14 +49,14 @@
         </li>
         <li class="menu-label">Otentikasi</li>
         <li>
-            <a href="{{ route('admin.karyawan') }}">
+            <a href="{{ route('editor.karyawan') }}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-user"></i>
                 </div>
                 <div class="menu-title">Data Karyawan</div>
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.user') }}">
+            <a href="{{ route('editor.user') }}">
                 <div class="parent-icon icon-color-7"><i class="bx bx-group"></i>
                 </div>
                 <div class="menu-title">Data User</div>

@@ -59,7 +59,6 @@ Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')
     Route::delete('depot/{depot}', 'DepotController@destroy')->name('depot.delete');
     
     Route::get('karyawan', 'KaryawanController@index')->name('karyawan');
-    Route::post('karyawan', 'KaryawanController@store')->name('karyawan.store');
     Route::get('karyawan/{karyawan}', 'KaryawanController@edit')->name('karyawan.edit');
     Route::put('karyawan/{karyawan}', 'KaryawanController@update')->name('karyawan.update');
     Route::delete('karyawan/{karyawan}', 'KaryawanController@destroy')->name('karyawan.delete');
