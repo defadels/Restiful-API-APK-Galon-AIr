@@ -300,7 +300,7 @@
                             <img src="https://via.placeholder.com/110x110" class="user-img" alt="user avatar">
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i
+                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="{{ route('admin.profile.show', Auth::user()->id) }}"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
                         <div class="dropdown-divider mb-0"></div>	
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i

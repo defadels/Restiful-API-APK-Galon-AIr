@@ -40,6 +40,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth','tolakselainadmin')->n
     Route::get('karyawan/{karyawan}', 'KaryawanController@edit')->name('karyawan.edit');
     Route::put('karyawan/{karyawan}', 'KaryawanController@update')->name('karyawan.update');
     Route::delete('karyawan/{karyawan}', 'KaryawanController@destroy')->name('karyawan.delete');
+
+    Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
+    Route::get('profile/edit/{profile}', 'ProfileController@edit')->name('profile.edit');
+    Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 });
 
 Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')->namespace('Editor')->group(function() {
@@ -62,6 +66,10 @@ Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')
     Route::get('karyawan/{karyawan}', 'KaryawanController@edit')->name('karyawan.edit');
     Route::put('karyawan/{karyawan}', 'KaryawanController@update')->name('karyawan.update');
     Route::delete('karyawan/{karyawan}', 'KaryawanController@destroy')->name('karyawan.delete');
+
+    Route::get('profile/{profile}', 'ProfileContoller@show')->name('profile.show');
+    Route::get('profile/{profile}', 'ProfileController@edit')->name('profile.edit');
+    Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 });
 
 Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->namespace('User')->group(function() {
@@ -75,6 +83,10 @@ Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->name
     Route::get('pesanan/{pesanan}', 'PesananController@edit')->name('pesanan.edit');
     Route::put('pesanan/{pesanan}', 'PesananController@update')->name('pesanan.update');
     Route::delete('pesanan/{pesanan}', 'PesananController@destroy')->name('pesanan.delete');    
+
+    Route::get('profile/{profile}', 'ProfileContoller@show')->name('profile.show');
+    Route::get('profile/{profile}', 'ProfileController@edit')->name('profile.edit');
+    Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
     
 });
 
