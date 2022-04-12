@@ -51,7 +51,7 @@
                                         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" value="1234560000" class="form-control">
+                                            <input type="password" name="password" value="{{Auth::user()->password}}" placeholder="Ketik jika ingin diubah!" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>

@@ -26,12 +26,8 @@
 								<h4 class="mb-0">Edit Profile</h4>
 							</div>
 							<hr/>
-						<form action="{{route($url, Auth::user()->id ?? '')}}" method="post" enctype="multipart/form-data">
+						<form action="{{route($url, $profile->id ?? '')}}" method="put" enctype="multipart/form-data">
                             @csrf
-                            
-                            @if(isset($depot))
-                             @method('put')
-                            @endif
 
                             <div class="form-body">
                                 <div class="row">
@@ -40,41 +36,83 @@
                                             <label for="profil">Foto Profil</label>
                                             <input type="file" class="form-control @error('profil') {{ 'is-invalid' }} @enderror" value="{{old('profil') ?? $profile->profil ?? ''}}" name="profil" id="">
                                             <small>*File foto harus berupa .jpeg dan .png</small>
+                                            @error('foto')
+                                    
+                                            <span class="text-danger">
+                                                {{$message}}
+                                            </span>
+                                
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-5 border-right">
                                        
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input type="text" value="{{Auth::user()->nama}}" class="form-control">
+                                                <input type="text" name="nama" value="{{$profile->nama}}" class="form-control">
+                                                @error('nama')
+                                    
+                                                <span class="text-danger">
+                                                    {{$message}}
+                                                </span>
+                                    
+                                            @enderror
                                             </div>
                                         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" value="1234560000" class="form-control">
+                                            <input type="password" name="password" @if(isset($profile))placeholder="Ketik jika ingin diubah"@endif class="form-control">
+                                            @error('password')
+                                    
+                                            <span class="text-danger">
+                                                {{$message}}
+                                            </span>
+                                
+                                        @enderror
                                         </div>
+
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" value="{{Auth::user()->email}}" class="form-control">
+                                            <input type="email" value="{{$profile->email}}" name="email" class="form-control">
+                                            @error('email')
+                                    
+                                            <span class="text-danger">
+                                                {{$message}}
+                                            </span>
+                                
+                                        @enderror
                                         </div>
+                                    
                                         <div class="form-group">
                                             <label>Nomor Handphone</label>
-                                            <input type="text" value="{{Auth::user()->nomor_hp}}" class="form-control">
+                                            <input type="text" value="{{$profile->nomor_hp}}" name="nomor_hp" class="form-control">
+                                            @error('nomor_hp')
+                                    
+                                            <span class="text-danger">
+                                                {{$message}}
+                                            </span>
+                                
+                                        @enderror
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control">{{Auth::user()->alamat}}</textarea>
+                                            <textarea class="form-control" name="alamat">{{$profile->alamat}}</textarea>
+                                            @error('alamat')
+                                    
+                                            <span class="text-danger">
+                                                {{$message}}
+                                            </span>
+                                
+                                        @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label>Hak Akses</label>
-                                            <input type="text" value="{{Auth::user()->jenis}}" class="form-control" readonly>
-                                        </div>
+
                                     </div>
-                                    <div class="col-12 col-lg-7">
+                                    {{-- <div class="col-12 col-lg-7">
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
                                                 <label>Jenis Kelamin</label>
-                                                <select class="form-control">
+                                                <select class="form-control" disabled>
                                                     <option>-- Pilih Jenis Kelamin --</option>
                                                     <option>Pria</option>
                                                     <option>Wanita</option>
@@ -87,7 +125,7 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
-                                                <input type="date" name="tgl_lahir" class="form-control" id="">
+                                                <input type="date" name="tgl_lahir" class="form-control" id="" disabled>
                                             </div>
                                             
                                            
@@ -95,29 +133,29 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Twitter</label>
-                                                <input type="text" class="form-control" value="https://twitter.com/" readonly>
+                                                <input type="text" class="form-control" value="" disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Linked In</label>
-                                                <input type="text" class="form-control" value="https://www.linkedin.com/" readonly>
+                                                <input type="text" class="form-control" value="" disabled>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Facebook</label>
-                                                <input type="text" class="form-control" value="https://www.facebook.com/" readonly>
+                                                <input type="text" class="form-control" value="" disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Dribbble</label>
-                                                <input type="text" class="form-control" value="https://dribbble.com/" readonly>
+                                                <input type="text" class="form-control" value="" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Slogan</label>
-                                            <input type="text" class="form-control" value="Land Acquisition Specialist">
+                                            <input type="text" class="form-control" value="" disabled>
                                         </div>
                                        
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             

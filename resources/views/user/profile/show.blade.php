@@ -36,7 +36,7 @@
                     <div class="col-12 col-lg-7 border-right">
                         <div class="d-md-flex align-items-center">
                             <div class="mb-md-0 mb-3">
-                                <img src="https://via.placeholder.com/110x110" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                <img src="{{Auth::user()->foto??'https://via.placeholder.com/110x110'}}" name="foto" class="rounded-circle shadow" width="130" height="130" alt="" />
                             </div>
                             <div class="ml-md-4 flex-grow-1">
                                 <div class="d-flex align-items-center mb-1">

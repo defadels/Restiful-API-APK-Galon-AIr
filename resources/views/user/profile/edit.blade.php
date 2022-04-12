@@ -38,7 +38,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="profil">Foto Profil</label>
-                                            <input type="file" class="form-control @error('profil') {{ 'is-invalid' }} @enderror" value="{{old('profil') ?? $profile->profil ?? ''}}" name="profil" id="">
+                                            <input type="file" class="form-control @error('foto') {{ 'is-invalid' }} @enderror" value="{{old('profil') ?? $profile->foto ?? ''}}" name="foto" id="">
                                             <small>*File foto harus berupa .jpeg dan .png</small>
                                         </div>
                                     </div>
@@ -46,28 +46,28 @@
                                        
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input type="text" value="{{Auth::user()->nama}}" class="form-control">
+                                                <input type="text" name="nama" value="{{Auth::user()->nama}}" class="form-control">
                                             </div>
                                         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" value="1234560000" class="form-control">
+                                            <input type="password" name="password" value="{{Auth::user()->password}}" placeholder="Ketik jika ingin diubah!" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" value="{{Auth::user()->email}}" class="form-control">
+                                            <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Nomor Handphone</label>
-                                            <input type="text" value="{{Auth::user()->nomor_hp}}" class="form-control">
+                                            <input type="text" name="nomor_hp" value="{{Auth::user()->nomor_hp}}" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control">{{Auth::user()->alamat}}</textarea>
+                                            <textarea class="form-control" name="alamat">{{Auth::user()->alamat}}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Hak Akses</label>
-                                            <input type="text" value="{{Auth::user()->jenis}}" class="form-control" readonly>
+                                            <input type="text" name="jenis" value="{{Auth::user()->jenis}}" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-7">
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Slogan</label>
-                                            <input type="text" class="form-control" value="Land Acquisition Specialist">
+                                            <input type="text" class="form-control" value="Land Acquisition Specialist" readonly>
                                         </div>
                                        
                                     </div>

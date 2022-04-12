@@ -44,11 +44,11 @@
                                 <label for="logo">Logo</label>
                                 <input type="file" name="logo" value="{{old('logo') ?? $depot->logo ?? ''}}" class="form-control @error('logo') {{ 'is-invalid' }} @enderror" id="">
                                 @error('logo')
-                                @foreach($errors->all() as $error)
+                                
                                 <span class="text-danger">
-                                    {{$error}}
+                                    {{$message}}
                                 </span>
-                                @endforeach
+                                
                                 @enderror
                             </div>
                             
@@ -56,11 +56,11 @@
                                 <label for="nama">Nama Depot</label>
                                 <input type="text" name="nama" value="{{old('nama') ?? $depot->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" id="">
                                 @error('nama')
-                                @foreach($errors->all() as $error)
+                                
                                 <span class="text-danger">
-                                    {{$error}}
+                                    {{$message}}
                                 </span>
-                                @endforeach
+                                
                                 @enderror
                             </div>
                             
@@ -68,11 +68,11 @@
                                 <label for="harga_ambil">Harga Ambil</label>
                                 <input type="number" name="harga_ambil" value="{{old('harga_ambil') ?? $depot->harga_ambil ?? ''}}" class="form-control @error('harga_ambil') {{ 'is-invalid' }} @enderror" id="">
                                 @error('harga_ambil')
-                                @foreach($errors->all() as $error)
+                                
                                 <span class="text-danger">
-                                    {{$error}}
+                                    {{$message}}
                                 </span>
-                                @endforeach
+                                
                                 @enderror
                             </div>
                             
@@ -80,11 +80,11 @@
                                 <label for="harga_jemput">Harga Jemput</label>
                                 <input type="number" name="harga_jemput" value="{{old('harga_jemput') ?? $depot->harga_jemput ?? ''}}" class="form-control @error('harga_jemput') {{ 'is-invalid' }} @enderror" id="">
                                 @error('harga_jemput')
-                                @foreach($errors->all() as $error)
+                                
                                 <span class="text-danger">
-                                    {{$error}}
+                                    {{$message}}
                                 </span>
-                                @endforeach
+                                
                                 @enderror
                             </div>
                             
@@ -92,11 +92,11 @@
                                 <label for="nomor_hp">Nomor Handphone</label>
                                 <input type="text" name="nomor_hp" value="{{old('nomor_hp') ?? $depot->nomor_hp ?? ''}}" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="">
                                 @error('nomor_hp')
-                                    @foreach($errors->all() as $error)
+                                    
                                     <span class="text-danger">
-                                        {{$error}}
+                                        {{$message}}
                                     </span>
-                                    @endforeach
+                                    
                                 @enderror
                             </div>
                             
@@ -104,11 +104,11 @@
                                 <label for="alamat">Alamat</label>
                                 <textarea name="alamat" id="" cols="20" rows="5" class="form-control @error('alamat') {{ 'is-invalid' }} @enderror">{{old('alamat') ?? $depot->alamat ?? ''}}</textarea>
                                 @error('alamat')
-                                    @foreach($errors->all() as $error)
+                                    
                                     <span class="text-danger">
-                                        {{$error}}
+                                        {{$message}}
                                     </span>
-                                    @endforeach
+                                    
                                 @enderror
                             </div>
                             
@@ -116,11 +116,11 @@
                                 <label for="email">Email</label>
                                 <input type="email" name="email" value="{{old('email') ?? $depot->email ?? ''}}" class="form-control @error('email') {{ 'is-invalid' }} @enderror" id="">
                                 @error('email')
-                                    @foreach($errors->all() as $error)
+                                    
                                     <span class="text-danger">
-                                        {{$error}}
+                                        {{$message}}
                                     </span>
-                                    @endforeach
+                                    
                                 @enderror
                             </div>
                             
@@ -128,11 +128,11 @@
                                 <label for="passowrd">Password</label>
                                 <input type="password" name="password" @if(isset($depot))placeholder="Ketik jika ingin diubah"@endif class="form-control" id="">
                                 @error('password')
-                                    @foreach($errors->all() as $error)
+                                    
                                     <span class="text-danger">
-                                        {{$error}}
+                                        {{$message}}
                                     </span>
-                                    @endforeach
+                        
                                 @enderror
                             </div>
                             
