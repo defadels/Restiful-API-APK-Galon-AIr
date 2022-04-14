@@ -75,7 +75,7 @@ class ProfileController extends Controller
 
             $path = 'user/foto/';
             $file_extension = $request->foto->extension();
-            $profile->foto = $nama_foto.".".$file_extension;
+            $profile->foto = $path.$nama_foto.".".$file_extension;
 
             $foto_profil = $request->file('foto');
             $letak_file = storage_path('/app/public/');
