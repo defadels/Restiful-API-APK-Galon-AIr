@@ -4,6 +4,7 @@
 
 @section('content')
 			<div class="page-content-wrapper">
+                @include('layout.admin.error')
 				<div class="page-content">
 					<!--breadcrumb-->
 					<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
@@ -26,15 +27,16 @@
 								<h4 class="mb-0">Edit Profile</h4>
 							</div>
 							<hr/>
-						<form action="{{route($url, $profile->id ?? '')}}" method="put" enctype="multipart/form-data">
+						<form action="{{route($url, Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('put')  
 
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="profil">Foto Profil</label>
-                                            <input type="file" class="form-control @error('profil') {{ 'is-invalid' }} @enderror" value="{{old('profil') ?? $profile->profil ?? ''}}" name="profil" id="">
+                                            <label for="foto">Foto Profil</label>
+                                            <input type="file" class="form-control @error('foto') {{ 'is-invalid' }} @enderror" value="{{old('foto') ?? $profile->foto ?? ''}}" name="foto" id="">
                                             <small>*File foto harus berupa .jpeg dan .png</small>
                                             @error('foto')
                                     
@@ -49,7 +51,7 @@
                                        
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input type="text" name="nama" value="{{$profile->nama}}" class="form-control">
+                                                <input type="text" name="nama" value="{{old('nama') ?? $profile->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror">
                                                 @error('nama')
                                     
                                                 <span class="text-danger">
@@ -59,9 +61,21 @@
                                             @enderror
                                             </div>
                                         
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" value="{{old('email') ?? $profile->email ?? ''}}" name="email" class="form-control @error('email') {{ 'is-invalid' }} @enderror">
+                                                @error('email')
+                                        
+                                                <span class="text-danger">
+                                                    {{$message}}
+                                                </span>
+                                    
+                                            @enderror
+                                            </div>
+                                        
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" name="password" @if(isset($profile))placeholder="Ketik jika ingin diubah"@endif class="form-control">
+                                            <input type="password" name="password" @if(isset($profile)) placeholder="Ketik jika ingin diubah" @endif class="form-control @error('password') {{ 'is-invalid' }} @enderror">
                                             @error('password')
                                     
                                             <span class="text-danger">
@@ -71,21 +85,10 @@
                                         @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" value="{{$profile->email}}" name="email" class="form-control">
-                                            @error('email')
-                                    
-                                            <span class="text-danger">
-                                                {{$message}}
-                                            </span>
-                                
-                                        @enderror
-                                        </div>
                                     
                                         <div class="form-group">
                                             <label>Nomor Handphone</label>
-                                            <input type="text" value="{{$profile->nomor_hp}}" name="nomor_hp" class="form-control">
+                                            <input type="text" value="{{old('nomor_hp') ?? $profile->nomor_hp ?? ''}}" name="nomor_hp" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror">
                                             @error('nomor_hp')
                                     
                                             <span class="text-danger">
@@ -97,7 +100,7 @@
                                         
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" name="alamat">{{$profile->alamat}}</textarea>
+                                            <textarea class="form-control" name="alamat">{{old('alamat') ?? $profile->alamat ?? ''}}</textarea>
                                             @error('alamat')
                                     
                                             <span class="text-danger">
@@ -108,7 +111,7 @@
                                         </div>
 
                                     </div>
-                                    {{-- <div class="col-12 col-lg-7">
+                                  <!--  <div class="col-12 col-lg-7">
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
                                                 <label>Jenis Kelamin</label>
@@ -155,9 +158,9 @@
                                             <input type="text" class="form-control" value="" disabled>
                                         </div>
                                        
-                                    </div> --}}
-                                </div>
-                            </div>
+                                    </div>
+                                </div> -->
+                            </div> 
                             
                             
                             <div class="form-group">

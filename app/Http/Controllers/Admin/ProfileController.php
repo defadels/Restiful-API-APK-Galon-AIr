@@ -14,7 +14,6 @@ use Hash;
 class ProfileController extends Controller
 {
     public function show(User $profile) {
-
         $profile = Auth::user();
 
         return view('admin.profile.show',compact('profile'));
@@ -26,7 +25,7 @@ class ProfileController extends Controller
 
         $url = 'admin.profile.update';
 
-        $button = 'Update';
+        $button = "Update";
         
         return view('admin.profile.edit',compact('profile','url','button'));
     }
@@ -60,12 +59,11 @@ class ProfileController extends Controller
         ];
 
         $validate = Validator::make($input, $rules, $message)->validate();
-        $profile = Auth::user();
 
         $profile->nama = $request->nama;
         $profile->email = $request->email;
         $profile->nomor_hp = $request->nomor_hp;
-        $depot->alamat = $request->alamat;
+        $profile->alamat = $request->alamat;
         
         if($request->has('password') && $request->password != '' ) {
             $profile->password = Hash::make($request->password);
@@ -94,7 +92,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect()->route('admin.profile.show')
+        return redirect()->route('admin.profile.show',$profile->id)
         ->with('message',__('pesan.update',['module' => $profile->nama]));
     }
 }

@@ -41,8 +41,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth','tolakselainadmin')->n
     Route::put('karyawan/{karyawan}', 'KaryawanController@update')->name('karyawan.update');
     Route::delete('karyawan/{karyawan}', 'KaryawanController@destroy')->name('karyawan.delete');
 
-    Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
-    Route::get('profile/edit/{profile}', 'ProfileController@edit')->name('profile.edit');
+    Route::get('profile/show/{profile}', 'ProfileController@show')->name('profile.show');
+    Route::get('profile/{profile}', 'ProfileController@edit')->name('profile.edit');
     Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 });
 
