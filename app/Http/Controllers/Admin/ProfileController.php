@@ -10,6 +10,7 @@ use Auth;
 use Image;
 use Storage;
 use Hash;
+use Str;
 
 class ProfileController extends Controller
 {
@@ -36,25 +37,22 @@ class ProfileController extends Controller
 
         $rules = [
             'nama' => ['required','max:50'],
-            'email' => ['required','unique:users,email'],
-            'password' => ['required'],
+            'email' => ['required','unique:users,email,'.$profile->id],
             'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13'],
             'foto' => ['file','mimes:jpeg,png','max:10240'],
-            'alamat' => ['required','max:500']
+            'alamat' => ['max:500']
         ];
 
         $message = [
             'nama.required' => 'Nama wajib diisi',
             'nama.max' => 'Nama maksimal 50 karakter',
             'email.required' => 'Email wajib diisi',
-            'password.required' => 'Passowrd wajib diisi',
             'nomor_hp.required' => 'Nomor handphone wajib diisi',
             'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016',
             'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',
             'foto.file' => 'Foto harus berupa file gambar',
             'foto.mimes' => 'Gambar foto harus berformat .jpg dan .png',
             'foto.max' => 'Ukuran file foto maksimal 1Mb',
-            'alamat.required' => 'Alamat depot wajib diisi',
             'alamat.max' => 'Alamat maksimal 500 karakter'
         ];
 
@@ -75,12 +73,12 @@ class ProfileController extends Controller
 
             $nama_foto = Str::uuid();
 
-            $path = 'karyawan/foto';
+            $path = 'user/foto/';
             $file_extension = $request->foto->extension();
             $profile->foto = $nama_foto.".".$file_extension;
 
             $foto_profil = $request->file('foto');
-            $letak_file = storage_path('/app/public');
+            $letak_file = storage_path('/app/public/');
 
             $img = Image::make($foto_profil->path());
             $img->fit(200, 200, function($cons){

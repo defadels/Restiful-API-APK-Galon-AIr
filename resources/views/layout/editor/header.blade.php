@@ -297,10 +297,10 @@
                                 <p class="user-name mb-0">{{Auth::user()->nama}}</p>
                                 <p class="designattion mb-0">{{Auth::user()->jenis}}</p>
                             </div>
-                            <img src="https://via.placeholder.com/110x110" class="user-img" alt="user avatar">
+                            <img src="{{Storage::url(Auth::user()->foto)??'https://via.placeholder.com/110x110'}}" class="user-img" alt="{{Auth::user()->foto??'user avatar'}}">
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i
+                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="{{ route('editor.profile.show', Auth::user()->id) }}"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
                         <div class="dropdown-divider mb-0"></div>	
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i

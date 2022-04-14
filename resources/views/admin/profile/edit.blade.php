@@ -36,7 +36,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="foto">Foto Profil</label>
-                                            <input type="file" class="form-control @error('foto') {{ 'is-invalid' }} @enderror" value="{{old('foto') ?? $profile->foto ?? ''}}" name="foto" id="">
+                                            <input type="file" class="form-control @error('foto') {{ 'is-invalid' }} @enderror" value="{{old('foto') ?? $profile->foto ?? ''}}" name="foto" id="foto">
                                             <small>*File foto harus berupa .jpeg dan .png</small>
                                             @error('foto')
                                     
@@ -50,8 +50,8 @@
                                     <div class="col-12 col-lg-5 border-right">
                                        
                                             <div class="form-group">
-                                                <label>Nama</label>
-                                                <input type="text" name="nama" value="{{old('nama') ?? $profile->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror">
+                                                <label for="nama">Nama</label>
+                                                <input type="text" name="nama" value="{{old('nama') ?? $profile->nama ?? ''}}" class="form-control @error('nama') {{ 'is-invalid' }} @enderror" id="nama">
                                                 @error('nama')
                                     
                                                 <span class="text-danger">
@@ -62,8 +62,8 @@
                                             </div>
                                         
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" value="{{old('email') ?? $profile->email ?? ''}}" name="email" class="form-control @error('email') {{ 'is-invalid' }} @enderror">
+                                                <label for="email">Email</label>
+                                                <input type="email" value="{{old('email') ?? $profile->email ?? ''}}" name="email" class="form-control @error('email') {{ 'is-invalid' }} @enderror" id="email">
                                                 @error('email')
                                         
                                                 <span class="text-danger">
@@ -74,8 +74,8 @@
                                             </div>
                                         
                                         <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" name="password" @if(isset($profile)) placeholder="Ketik jika ingin diubah" @endif class="form-control @error('password') {{ 'is-invalid' }} @enderror">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" placeholder="Ketik jika ingin diubah" class="form-control @error('password') {{ 'is-invalid' }} @enderror" id="password">
                                             @error('password')
                                     
                                             <span class="text-danger">
@@ -87,8 +87,8 @@
 
                                     
                                         <div class="form-group">
-                                            <label>Nomor Handphone</label>
-                                            <input type="text" value="{{old('nomor_hp') ?? $profile->nomor_hp ?? ''}}" name="nomor_hp" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror">
+                                            <label for="nomor_hp">Nomor Handphone</label>
+                                            <input type="text" value="{{old('nomor_hp') ?? $profile->nomor_hp ?? ''}}" name="nomor_hp" class="form-control @error('nomor_hp') {{ 'is-invalid' }} @enderror" id="nomor_hp">
                                             @error('nomor_hp')
                                     
                                             <span class="text-danger">
@@ -100,7 +100,7 @@
                                         
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" name="alamat">{{old('alamat') ?? $profile->alamat ?? ''}}</textarea>
+                                            <textarea class="form-control" name="alamat" id="alamat">{{old('alamat') ?? $profile->alamat ?? ''}}</textarea>
                                             @error('alamat')
                                     
                                             <span class="text-danger">

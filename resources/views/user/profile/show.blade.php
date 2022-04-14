@@ -1,7 +1,10 @@
 @extends('layout.user_layout')
 
+@section('title','Edit Profile')
+
 @section('content')
 <div class="page-content-wrapper">
+    @include('layout.user.error')
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
@@ -36,16 +39,16 @@
                     <div class="col-12 col-lg-7 border-right">
                         <div class="d-md-flex align-items-center">
                             <div class="mb-md-0 mb-3">
-                                <img src="{{Auth::user()->foto??'https://via.placeholder.com/110x110'}}" name="foto" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                <img src="{{ Storage::url($profile->foto) ?? 'https://via.placeholder.com/110x110'}}" class="rounded-circle shadow" width="130" height="130" alt="{{$profile->foto ?? 'Foto'}}" />
                             </div>
                             <div class="ml-md-4 flex-grow-1">
                                 <div class="d-flex align-items-center mb-1">
-                                    <h4 class="mb-0">{{Auth::user()->nama}}</h4>
+                                    <h4 class="mb-0">{{$profile->nama}}</h4>
                                     <p class="mb-0 ml-auto">$44/hr</p>
                                 </div>
                                 <p class="mb-0 text-muted">Sr. Web Developer</p>
                                 <p class="text-primary"><i class='bx bx-buildings'></i> Epic Coders</p>
-                                <a href="{{route('admin.profile.edit',Auth::user()->id)}}" class="btn btn-primary">Edit Data</a>
+                                <a href="{{route('user.profile.edit',$profile->id)}}" class="btn btn-primary">Edit Data</a>
                             </div>
                         </div>
                     </div>
