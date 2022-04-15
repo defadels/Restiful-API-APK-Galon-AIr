@@ -74,7 +74,7 @@ class ProfileController extends Controller
             $nama_foto = Str::uuid();
 
             $path = 'user/foto/';
-            $file_extension = $request->foto->extension();
+            $file_extension = $request->foto->extension(); 
             $profile->foto = $path.$nama_foto.".".$file_extension;
 
             $foto_profil = $request->file('foto');

@@ -201,7 +201,7 @@ class DepotController extends Controller
             $path = 'depot/logo/'; 
             $file_extension = $request->logo->extension();
             $depot->logo = $path.$nama_file.".".$file_extension;
-            
+             
             $gambar = $request->file('logo');
             $destinationPath = storage_path('/app/public/');
 

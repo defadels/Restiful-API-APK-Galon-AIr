@@ -66,7 +66,7 @@ class ProfileController extends Controller
         if($request->has('password') && $request->password != '' ) {
             $profile->password = Hash::make($request->password);
         }
-
+ 
         if($request->hasFile('foto')) {
             
             $foto_lama = $profile->foto;
