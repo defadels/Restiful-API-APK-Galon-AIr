@@ -21,9 +21,14 @@ class CreateUsersTable extends Migration
             $table->longText('alamat')->nullable();
             $table->string('bujur')->nullable();
             $table->string('lintang')->nullable();
+            $table->integer('harga_ambil')->nullable();
+            $table->integer('harga_jemput')->nullable();
             $table->string('nomor_hp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('google')->nullable();
             $table->enum('status', ['aktif','nonaktif'])->default('aktif');
             $table->enum('jenis', ['user','depot','editor','admin'])->default('user');
             $table->rememberToken();

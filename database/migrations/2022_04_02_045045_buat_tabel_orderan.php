@@ -25,7 +25,7 @@ class BuatTabelOrderan extends Migration
             $table->foreign('dibuat_oleh_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('depot_id')->nullable();
-            $table->foreign('depot_id')->references('id')->on('depot');
+            $table->foreign('depot_id')->references('id')->on('users');
 
             $table->timestamps();
         });

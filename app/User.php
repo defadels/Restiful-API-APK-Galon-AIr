@@ -40,4 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function daftar_penjualan() {
         return $this->hasMany('App\Pesanan', 'dibuat_oleh_id');
     }
+
+    public function pesanan() {
+        $this->hasMany('App\Pesanan', 'depot_id');
+    }
 }
