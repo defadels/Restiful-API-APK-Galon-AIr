@@ -44,11 +44,11 @@
 										@foreach($daftar_depot as $depot)
 
 										<tr>
-											<th style="max-width:70px;" scope="row"><img src="{{Storage::url($depot->logo)}}" class="img-fluid rounded-circle" alt="{{$depot->logo}}" srcset=""></th>
+											<th style="max-width:70px;" scope="row"><img src="{{Storage::url($depot->foto)}}" class="img-fluid rounded-circle" alt="{{$depot->foto}}" srcset=""></th>
 											<td>{{$depot->nama}}</td>
 											<td>{{$depot->alamat}}</td>
 											<td>
-												<a href="" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
+												<a href="{{route('user.depot.orderan', $depot->id)}}" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
 											</td>
 										</tr>
 										@endforeach

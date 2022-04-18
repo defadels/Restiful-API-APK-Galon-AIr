@@ -86,7 +86,7 @@
                                     @endif
 
                                     @if(Auth::user()->jenis == 'user')
-                                    <a href="{{route('user.dashboard')}}" class="dropdown-item">Editor Dashboard</a>
+                                    <a href="{{route('user.dashboard')}}" class="dropdown-item">User Dashboard</a>
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

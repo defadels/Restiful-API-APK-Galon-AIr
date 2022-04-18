@@ -40,10 +40,16 @@
                              @method('put')
                             @endif
 
+                            @if(isset($depot))
+                                <div class="form-group">
+                                    <img src="{{Storage::url($depot->foto)}}" style="max-width: 25em;" alt="" class="img-fluid">
+                                </div>
+                            @endif
+
                             <div class="form-group">
-                                <label for="logo">Logo</label>
-                                <input type="file" name="logo" value="{{old('logo') ?? $depot->logo ?? ''}}" class="form-control @error('logo') {{ 'is-invalid' }} @enderror" id="">
-                                @error('logo')
+                                <label for="foto">Logo</label>
+                                <input type="file" name="foto" value="{{old('foto') ?? $depot->foto ?? ''}}" class="form-control @error('foto') {{ 'is-invalid' }} @enderror" id="">
+                                @error('foto')
                                 @foreach($errors->all() as $error)
                                 <span class="text-danger">
                                     {{$error}}

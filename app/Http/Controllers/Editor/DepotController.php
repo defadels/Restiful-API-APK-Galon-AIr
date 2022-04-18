@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Editor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Image;
-use App\Depot;
+use App\User;
 use Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class DepotController extends Controller
     {
         $title = 'Halaman depot';
 
-        $daftar_depot = Depot::paginate(10);
+        $daftar_depot = User::where('jenis','depot')->paginate(10);
         
         return view('editor.depot.index',compact('title','daftar_depot'));
     }
@@ -65,7 +65,7 @@ class DepotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Depot $depot)
+    public function edit(User $depot)
     {
         $title = 'Edit data depot';
 
@@ -83,7 +83,7 @@ class DepotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Depot $depot)
+    public function update(Request $request, User $depot)
     {
         $input = $request->all();
 
@@ -126,23 +126,23 @@ class DepotController extends Controller
             $depot->password = Hash::make($request->password);
         }
 
-        if($request->hasFile('logo')) {
+        if($request->hasFile('foto')) {
 
-            $old_logo = $depot->logo;
+            $old_logo = $depot->foto;
 
             $nama_file = Str::uuid();
 
             $path = 'depot/logo/'; 
-            $file_extension = $request->logo->extension();
-            $depot->logo = $path.$nama_file.".".$file_extension;
+            $file_extension = $request->foto->extension();
+            $depot->foto = $path.$nama_file.".".$file_extension;
             
-            $gambar = $request->file('logo');
+            $gambar = $request->file('foto');
             $destinationPath = storage_path('/app/public/');
 
             $img = Image::make($gambar->path());
             $img->fit(1000, 1000, function ($cons) {
                 $cons->aspectRatio();
-            })->save($destinationPath.$depot->logo);
+            })->save($destinationPath.$depot->foto);
 
             Storage::disk('public')->delete($old_logo);
         }
@@ -158,12 +158,12 @@ class DepotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Depot $depot)
+    public function destroy(User $depot)
     {
         try{
             $nama = $depot->nama;
 
-            Storage::disk('public')->delete($depot->logo);
+            Storage::disk('public')->delete($depot->foto);
             
             $depot->delete();
 

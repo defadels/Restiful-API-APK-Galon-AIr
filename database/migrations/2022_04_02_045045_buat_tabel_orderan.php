@@ -20,12 +20,16 @@ class BuatTabelOrderan extends Migration
             $table->dateTime('tanggal')->nullable();
             $table->string('no_transaksi')->nullable();
             $table->enum('status',['masuk','diproses', 'dikirim', 'diantar', 'selesai', 'batal'])->default('masuk');
-
+            $table->integer('total_harga')->nullable();
+            $table->integer('jumlah')->nullable();
             $table->unsignedBigInteger('dibuat_oleh_id')->nullable();
             $table->foreign('dibuat_oleh_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('depot_id')->nullable();
             $table->foreign('depot_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('diproses_oleh_id')->nullable();
+            $table->foreign('diproses_oleh_id')->references('id')->on('users');
 
             $table->timestamps();
         });

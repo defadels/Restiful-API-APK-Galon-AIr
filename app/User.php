@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'nama', 'email', 'password', 'jenis', 'nomor_hp',
+        'nama', 'email', 'password', 'jenis', 'nomor_hp','harga_ambil','harga_jemput','alamat'
     ];
 
     /**
@@ -43,5 +43,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function pesanan() {
         $this->hasMany('App\Pesanan', 'depot_id');
+    }
+
+    public function diproses() {
+        $this->hasMany('App\Pesanan', 'diproses_oleh_id');
     }
 }

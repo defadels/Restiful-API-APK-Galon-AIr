@@ -15,7 +15,11 @@ class Pesanan extends Model
     }
 
     public function depot() {
-        return $this->belongsTo('App\Depot','depot_id');
+        return $this->belongsTo('App\User','depot_id');
+    }
+
+    public function proses() {
+        return $this->belongsTp('App\User','diproses_oleh_id');
     }
 
 }
