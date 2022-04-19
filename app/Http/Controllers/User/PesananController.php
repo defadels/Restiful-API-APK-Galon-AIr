@@ -28,7 +28,7 @@ class PesananController extends Controller
         $rules = [
             'jumlah' => 'numeric',
         ];
-
+ 
         $message = [
             'jumlah.numeric' => 'Jumlah barang harus berupa angka'
         ];

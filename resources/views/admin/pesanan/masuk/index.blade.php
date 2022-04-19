@@ -41,7 +41,7 @@
 										<tr>
 											<th scope="col">Tanggal</th>
 											<th scope="col">Nama Pelanggan</th>
-											<th scope="col">Total Harga</th>
+											<th scope="col">Total Harga</th> 
                                             <th scope="col">Status</th>
 											<th scope="col">Aksi</th>
 										</tr>

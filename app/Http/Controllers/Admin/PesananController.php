@@ -19,7 +19,7 @@ class PesananController extends Controller
         $description = "Daftar orderan yang masuk";
 
         return view('admin.pesanan.masuk.index',compact('orderan','description'));
-    }
+    } 
 
     public function masuk_edit(Pesanan $pesanan){
         
