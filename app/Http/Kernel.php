@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'tolakselainadmin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
         'tolakselaineditor' => \App\Http\Middleware\RedirectIfNotEditor::class,
-        'tolakselainuser' => \App\Http\Middleware\RedirectIfNotUser::class
+        'tolakselainuser' => \App\Http\Middleware\RedirectIfNotUser::class,
+        'tolakselaindepot' => \App\Http\Middleware\RedirectIfNotDepot::class
     ];
 }

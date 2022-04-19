@@ -129,6 +129,10 @@ Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->name
     
 });
 
+Route::prefix('depot')->name('depot.')->middleware('auth','tolakselaindepot')->namespace('Depot')->group(function(){
+    Route::get('dashboard','DashboardController@index')->name('dashboard');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
