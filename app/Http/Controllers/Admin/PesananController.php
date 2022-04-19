@@ -21,6 +21,10 @@ class PesananController extends Controller
         return view('admin.pesanan.masuk.index',compact('orderan','description'));
     }
 
+    public function masuk_edit(Pesanan $pesanan){
+        
+    }
+
     public function store(Request $request, User $depot){
         $input = $request->all();
 
