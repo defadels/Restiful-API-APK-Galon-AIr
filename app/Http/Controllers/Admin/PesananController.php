@@ -21,8 +21,24 @@ class PesananController extends Controller
         return view('admin.pesanan.masuk.index',compact('orderan','description'));
     } 
 
-    public function masuk_edit(Pesanan $pesanan){
-        
+    public function masuk_edit(Pesanan $orderan, User $depot){
+        $title = 'Edit orderan';
+
+        $url = 'admin.pesanan.store';
+
+        $button = 'Update';
+
+        return view('admin.pesanan.masuk.form',compact('depot','button','url','title','orderan'));
+    }
+
+    public function masuk_show(Pesanan $orderan, User $depot) {
+        $title = 'Lihat orderan';
+
+        $url = 'admin.pesanan.store';
+
+        $button = 'Proses';
+
+        return view('admin.pesanan.masuk.show',compact('depot','button','url','title','orderan'));
     }
 
     public function store(Request $request, User $depot){

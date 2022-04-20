@@ -48,17 +48,19 @@ Route::prefix('admin')->name('admin.')->middleware('auth','tolakselainadmin')->n
     Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 
     Route::get('pesanan','PesananController@index')->name('pesanan');
-    // Route::get('pesanan/{depot}', 'PesananController@store')->name('pesanan.store');
-
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/','PesananController@masuk_edit')->name('pesanan.masuk');
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/show', 'PesananController@masuk_show')->name('pesanan.lihat');
+    
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
     Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
-
+    
     Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
     Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
-
+    
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
-
+    
     Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');
+   
 });
 
 Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')->namespace('Editor')->group(function() {
@@ -90,13 +92,13 @@ Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')
     Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 
     Route::get('pesanan','PesananController@index')->name('pesanan');
-    Route::get('pesanan/{depot}', 'PesananController@order')->name('pesanan.order');
+    // Route::get('pesanan/{depot}', 'PesananController@store')->name('pesanan.store');
 
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
     Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
 
-    Route::get('pesanan-diantar','ProsesController@antar')->name('pesanan.antar');
-    Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan,diantar');
+    Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
+    Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
 
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
 
@@ -121,7 +123,7 @@ Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->name
 
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
 
-    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');    
+    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');   
 
     Route::get('profile/show/{profile}', 'ProfileController@show')->name('profile.show');
     Route::get('profile/{profile}', 'ProfileController@edit')->name('profile.edit');
@@ -131,6 +133,19 @@ Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->name
 
 Route::prefix('depot')->name('depot.')->middleware('auth','tolakselaindepot')->namespace('Depot')->group(function(){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+    Route::get('pesanan','PesananController@index')->name('pesanan');
+    // Route::get('pesanan/{depot}', 'PesananController@store')->name('pesanan.store');
+
+    Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
+    Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
+
+    Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
+    Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
+
+    Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
+
+    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');
 });
 
 Auth::routes(['verify' => true]);

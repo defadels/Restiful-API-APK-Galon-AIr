@@ -36,11 +36,11 @@
                             <div class="row">
                                 <div class="col-md-6 border-right">
                                     <h6><strong>Nama Pelanggan</strong> </h6>
-                                    <p>{{Auth::user()->nama}}</p>       
+                                    <p>{{$orderan->dibuat->nama}}</p>       
                                     <h6><strong>Alamat</strong></h6>
-                                    <p>{{Auth::user()->alamat}}</p>       
+                                    <p>{{$orderan->dibuat->alamat}}</p>       
                                     <h6><strong>Nomor Handphone</strong></h6>
-                                    <p>{{Auth::user()->nomor_hp}}</p>       
+                                    <p>{{$orderan->dibuat->nomor_hp}}</p>       
                                 </div>
                                 <div class="col-md-6">
                                     <h6><strong>Nama Depot</strong></h6>
@@ -56,54 +56,36 @@
                             
                             <div class="form-group">
                                 <label for="harga">Pilihan Harga</label>
-                                <select class="form-control harga">
-                                    <option value="0">--- Pilih Harga ---</option>
-                                    <option value="{{$depot->harga_ambil}}">Harga Ambil</option>
-                                    <option value="{{$depot->harga_jemput}}">Harga Jemput</option>
-                                </select>
-                                @error('harga')
-                                
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                
-                                @enderror
+                            
+                                @if($orderan->total === $depot->harga_ambil)
+
+                                    <p>Harga Ambil</p>
+
+                                @endif
+
+                                @if($orderan->total === $depot->harga_jemput)
+
+                                <p>Harga Jemput</p>
+
+                                @endif
+                           
+
+                                <p>{{$orderan->harga}}</p>
                             </div>
                             
                             <div class="form-group">
                                 <label for="total">Harga</label>
-                                <input type="number" name="total" value="{{old('total') ?? $orderan->total ?? ''}}" class="form-control @error('total') {{ 'is-invalid' }} @enderror" id="total" readonly>
-                                @error('total')
-                                
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                
-                                @enderror
+                                <p>{{$orderan->total}}</p>
                             </div>
                             
                             <div class="form-group">
                                 <label for="jumlah">Jumlah Pesan</label>
-                                <input type="number" name="jumlah" value="{{old('jumlah') ?? $orderan->jumlah ?? ''}}" class="form-control @error('jumlah') {{ 'is-invalid' }} @enderror" id="jumlah">
-                                @error('jumlah')
-                                
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                
-                                @enderror
+                                <p>{{$orderan->jumlah}}</p>
                             </div>
                             
                             <div class="form-group">
                                 <label for="total_harga">Total Harga</label>
-                                <input type="number" name="total_harga" value="{{old('total_harga') ?? $orderan->total_harga ?? ''}}" class="form-control @error('total_harga') {{ 'is-invalid' }} @enderror" id="total_harga" readonly>
-                                @error('total_harga')
-                                    
-                                    <span class="text-danger">
-                                        {{$message}}
-                                    </span>
-                                    
-                                @enderror
+                                <p>{{$orderan->total_harga}}</p>
                             </div>
                             
                           

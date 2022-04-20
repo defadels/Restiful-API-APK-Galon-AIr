@@ -17,20 +17,13 @@
 								</ol>
 							</nav>
 						</div>
-                        @if(isset($depot))
-						<div class="ml-auto">
-							<div class="btn-group">
-								<button data-toggle="modal" data-target="#deleteModal" class="btn btn-md radius-30 btn-danger">
-                                    <i class="bx bx-trash"></i> Hapus</button> 
-							</div>
-						</div>
-                        @endif
+                   
 					</div>
 					<!--end breadcrumb-->
 					<div class="card radius-15">
 						<div class="card-body">
 							<div class="card-title">
-								<h4 class="mb-0">Tambah Data Depot</h4>
+								<h4 class="mb-0">Tambah Orderan Masuk</h4>
 							</div>
 							<hr/>
 						<form action="{{route($url, $depot->id ?? '')}}" method="post" enctype="multipart/form-data">

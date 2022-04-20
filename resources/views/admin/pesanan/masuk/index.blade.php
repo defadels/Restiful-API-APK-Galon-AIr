@@ -56,8 +56,8 @@
                                             <td>
                                                 <button class="btn btn-sm btn-success">{{$order->status}}</button></td>
 											<td>
-												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
-                                                <a href="{{route('admin.depot.orderan', $order->id)}}" title="Lihat" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
+												<a href="{{route('admin.pesanan.lihat', [$order->id, $order->depot_id])}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
+                                                <a href="{{route('admin.pesanan.masuk', [$order->id, $order->depot_id])}}" title="Edit" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
 												<a href="{{route('admin.depot.edit', $order->id)}}" title="Batal" class="btn btn-sm btn-danger"><i class="bx bx-block"></i></a>
 											</td>
 										</tr>

@@ -16,7 +16,7 @@ class RedirectIfNotDepot
     public function handle($request, Closure $next)
     {   
         if(!Auth::user()->jenis == 'depot') {
-            
+            return redirect(RouteServiceProvider::HOME);
         }
         return $next($request);
     }
