@@ -52,14 +52,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth','tolakselainadmin')->n
     Route::get('pesanan/orderan/{orderan}/depot/{depot}/show', 'PesananController@masuk_show')->name('pesanan.lihat');
     
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
-    Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
+    Route::put('pesanan-proses/{orderan}','PesananController@update')->name('pesanan.update');
     
     Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
     Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
     
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
     
-    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');
+    Route::get('pesanan-selesai','PesananController@selesai')->name('pesanan.selesai');
    
 });
 

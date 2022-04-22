@@ -54,7 +54,7 @@
 											<td>{{$order->dibuat->nama}}</td>
 											<td>Rp.{{number_format($order->total_harga)}}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-success">{{$order->status}}</button></td>
+                                                <button class="btn btn-sm btn-primary">{{$order->status}}</button></td>
 											<td>
 												<a href="{{route('admin.pesanan.lihat', [$order->id, $order->depot_id])}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
                                                 <a href="{{route('admin.pesanan.masuk', [$order->id, $order->depot_id])}}" title="Edit" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>

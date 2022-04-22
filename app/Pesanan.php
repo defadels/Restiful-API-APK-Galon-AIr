@@ -19,7 +19,7 @@ class Pesanan extends Model
     }
 
     public function proses() {
-        return $this->belongsTp('App\User','diproses_oleh_id');
+        return $this->belongsTo('App\User','diproses_oleh_id');
     }
 
 }

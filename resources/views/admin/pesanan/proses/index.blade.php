@@ -40,9 +40,10 @@
 									<thead>
 										<tr>
 											<th scope="col">Nomor Transaksi</th>
-											<th scope="col">Nama Pelanggan</th>
+											<th scope="col">Diproses</th>
 											<th scope="col">Total Harga</th>
 											<th scope="col">Status</th>
+											<th scope="col">Jenis Harga</th>
 											<th scope="col">Aksi</th>
 										</tr>
 									</thead>
@@ -50,13 +51,29 @@
 										@foreach($orderan as $order)
 
 										<tr>
-											<th style="max-width:70px;" scope="row">{{$order->tanggal}}</th>
-											<td>{{$order->pelanggan->nama}}</td>
-											<td>{{$order->total_harga}}</td>
-                                            <td>{{$order->status}}</td>
+											<th style="max-width:70px;" scope="row">{{$order->no_transaksi}}</th>
+											<td>{{$order->proses->nama}}</td>
+											<td>Rp.{{number_format($order->total_harga)}}</td>
+                                            <td>
+												<button class="btn btn-sm btn-warning">{{$order->status}}</button>
+											</td>
 											<td>
-												<a href="{{route('admin.depot.edit', $order->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
-												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
+												@if($order->total === $order->depot->harga_ambil)
+
+												<p>Harga Ambil</p>
+				
+												@endif
+				
+												@if($order->total === $order->depot->harga_jemput)
+				
+												<p>Harga Jemput</p>
+				
+												@endif
+											</td>
+											<td>
+												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
+												{{-- <a href="{{route('admin.depot.edit', $order->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a> --}}
+												<a href="{{route('admin.depot.edit', $order->id)}}" title="Batal" class="btn btn-sm btn-danger"><i class="bx bx-block"></i></a>
 											</td>
 										</tr>
 										@endforeach

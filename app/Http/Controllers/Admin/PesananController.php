@@ -34,7 +34,7 @@ class PesananController extends Controller
     public function masuk_show(Pesanan $orderan, User $depot) {
         $title = 'Lihat orderan';
 
-        $url = 'admin.pesanan.store';
+        $url = 'admin.pesanan.update';
 
         $button = 'Proses';
 
@@ -76,11 +76,35 @@ class PesananController extends Controller
     }
 
     public function proses() {
-        $orderan = Pesanan::where('status','proses')->paginate(10);
+        $orderan = Pesanan::where('status','diproses')->paginate(10);
 
         $description = "Daftar orderan yang diproses";
 
         return view('admin.pesanan.proses.index',compact('orderan','description'));
+    }
+
+    public function update(Request $request, Pesanan $orderan) {
+        $input = $request->all();
+
+        $rules = [
+            'status' => 'nullable',
+            'diproses_oleh_id' => 'nullable'
+        ];
+
+        $message = [
+            'status.nullable' => 'Status wajib diisi',
+            'diproses_oleh_id.nullable' => 'User yang memproses wajib diisi'
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        $orderan->status = 'diproses';
+        $orderan->diproses_oleh_id = Auth::user()->id;
+
+        $orderan->save();
+        
+        return redirect()->route('admin.pesanan.proses')
+        ->with('message',__('pesan.update', ['module' => $orderan->no_transaksi]));
     }
 
     public function antar() {

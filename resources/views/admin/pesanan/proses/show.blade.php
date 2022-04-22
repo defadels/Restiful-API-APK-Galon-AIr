@@ -87,6 +87,13 @@
                                 <label for="total_harga">Total Harga</label>
                                 <p>{{$orderan->total_harga}}</p>
                             </div>
+                            
+                            <hr>
+
+                            <div class="form-group">
+                                <label for="diproses_oleh_id">Diproses Oleh</label>
+                                <p>{{$orderan->proses->nama}}</p>
+                            </div>
                          
                             <div class="form-group">
                                 <button type="button" class="btn btn-sm btn-secondary" onclick="window.history.back()">Kembali</button>
