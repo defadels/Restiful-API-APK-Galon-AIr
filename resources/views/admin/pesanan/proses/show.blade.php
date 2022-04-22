@@ -92,7 +92,7 @@
 
                             <div class="form-group">
                                 <label for="diproses_oleh_id">Diproses Oleh</label>
-                                <p>{{$orderan->proses->nama}}</p>
+                                <p>{{$orderan->proses->nama}} -- {{$orderan->proses->jenis}}</p>
                             </div>
                          
                             <div class="form-group">

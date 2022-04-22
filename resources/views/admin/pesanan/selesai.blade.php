@@ -39,7 +39,7 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">Tanggal</th>
+											<th scope="col">Nomor Transaksi</th>
 											<th scope="col">Nama Pelanggan</th>
 											<th scope="col">Total Harga</th>
                                             <th scope="col">Status</th>
@@ -50,13 +50,13 @@
 										@foreach($orderan as $order)
 
 										<tr>
-											<th style="max-width:70px;" scope="row">{{$order->tanggal}}</th>
-											<td>{{$order->pelanggan->nama}}</td>
+											<th style="max-width:70px;" scope="row">{{$order->no_transaksi}}</th>
+											<td>{{$order->dibuat->nama}}</td>
 											<td>{{$order->total_harga}}</td>
-                                            <td>{{$order->status}}</td>
+                                            <td><button class="btn btn-sm btn-success">{{$order->status}}</button></td>
 											<td>
-												<a href="{{route('admin.depot.edit', $order->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
-												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
+												<a href="{{route('admin.depot.edit', $order->id)}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
+												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Print" class="btn btn-sm btn-danger"><i class="bx bx-printer"></i></a>
 											</td>
 										</tr>
 										@endforeach

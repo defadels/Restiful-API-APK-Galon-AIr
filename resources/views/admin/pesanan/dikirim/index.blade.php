@@ -39,7 +39,7 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">Tanggal</th>
+											<th scope="col">Nomor Transaksi</th>
 											<th scope="col">Nama Pelanggan</th>
 											<th scope="col">Total Harga</th>
                                             <th scope="col">Status</th>
@@ -50,8 +50,8 @@
 										@foreach($orderan as $order)
 
 										<tr>
-											<th style="max-width:70px;" scope="row">{{$order->tanggal}}</th>
-											<td>{{$order->pelanggan->nama}}</td>
+											<th style="max-width:70px;" scope="row">{{$order->no_transaksi}}</th>
+											<td>{{$order->dibuat->nama}}</td>
 											<td>{{$order->total_harga}}</td>
 											<td>{{$order->status}}</td>
 											<td>

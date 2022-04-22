@@ -50,9 +50,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth','tolakselainadmin')->n
     Route::get('pesanan','PesananController@index')->name('pesanan');
     Route::get('pesanan/orderan/{orderan}/depot/{depot}/','PesananController@masuk_edit')->name('pesanan.masuk');
     Route::get('pesanan/orderan/{orderan}/depot/{depot}/show', 'PesananController@masuk_show')->name('pesanan.lihat');
+    Route::put('pesanan/orderan/{orderan}','PesananController@masuk_update')->name('pesanan.update');
     
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
-    Route::put('pesanan-proses/{orderan}','PesananController@update')->name('pesanan.update');
+    Route::get('pesanan-proses/orderan/{orderan}/depot/{depot}/show', 'PesananController@proses_show')->name('pesanan.proses.lihat');
+    Route::put('pesanan-proses/orderan/{orderan}','PesananController@proses_update')->name('pesanan.proses.update');
     
     Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
     Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');

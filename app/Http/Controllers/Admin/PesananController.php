@@ -75,15 +75,7 @@ class PesananController extends Controller
         ->with('message',__('pesan.create', ['module' => $pesanan->no_transaksi]));
     }
 
-    public function proses() {
-        $orderan = Pesanan::where('status','diproses')->paginate(10);
-
-        $description = "Daftar orderan yang diproses";
-
-        return view('admin.pesanan.proses.index',compact('orderan','description'));
-    }
-
-    public function update(Request $request, Pesanan $orderan) {
+    public function masuk_update(Request $request, Pesanan $orderan) {
         $input = $request->all();
 
         $rules = [
@@ -104,6 +96,57 @@ class PesananController extends Controller
         $orderan->save();
         
         return redirect()->route('admin.pesanan.proses')
+        ->with('message',__('pesan.update', ['module' => $orderan->no_transaksi]));
+    }
+
+    public function proses() {
+        $orderan = Pesanan::where('status','diproses')->paginate(10);
+
+        $description = "Daftar orderan yang diproses";
+
+        return view('admin.pesanan.proses.index',compact('orderan','description'));
+    }
+
+    public function proses_show(Pesanan $orderan, User $depot) {
+        $title = 'Lihat orderan';
+
+        $url = 'admin.pesanan.proses.update';
+
+        if($orderan->total == $depot->harga_ambil) {
+            $button = 'Selesai';
+        } else if($orderan->total == $depot->harga_jemput) {
+            $button = 'Kirim';
+        }
+        return view('admin.pesanan.proses.show',compact('depot','button','url','title','orderan'));
+    }
+
+    public function proses_update(Request $request, Pesanan $orderan) {
+        $input = $request->all();
+
+        $rules = [
+            'status' => 'nullable',
+        ];
+
+        $message = [
+            'status.nullable' => 'Status wajib diisi'
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        if($orderan->total == $orderan->depot->harga_ambil) {
+
+            $orderan->status = 'selesai';
+            $rute = 'selesai';
+
+        } else if($orderan->total == $orderan->depot->harga_jemput) {
+
+            $orderan->status = 'dikirim';
+            $rute = 'antar';
+        }
+
+        $orderan->save();
+        
+        return redirect()->route('admin.pesanan.'.$rute)
         ->with('message',__('pesan.update', ['module' => $orderan->no_transaksi]));
     }
 
