@@ -16,12 +16,12 @@ class BuatTabelOrderan extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->bigIncrements('id');
             
-            $table->integer('total')->nullable();
+            $table->string('total')->nullable();
             $table->dateTime('tanggal')->nullable();
             $table->string('no_transaksi')->nullable();
             $table->enum('status',['masuk','diproses', 'dikirim', 'diantar', 'selesai', 'batal'])->default('masuk');
-            $table->integer('total_harga')->nullable();
-            $table->integer('jumlah')->nullable();
+            $table->string('total_harga')->nullable();
+            $table->string('jumlah')->nullable();
             $table->unsignedBigInteger('dibuat_oleh_id')->nullable();
             $table->foreign('dibuat_oleh_id')->references('id')->on('users');
 

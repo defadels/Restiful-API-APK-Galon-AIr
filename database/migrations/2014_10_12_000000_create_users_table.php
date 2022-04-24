@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->longText('alamat')->nullable();
             $table->string('bujur')->nullable();
             $table->string('lintang')->nullable();
-            $table->integer('harga_ambil')->nullable();
-            $table->integer('harga_jemput')->nullable();
+            $table->string('harga_ambil')->nullable();
+            $table->string('harga_jemput')->nullable();
             $table->string('nomor_hp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
