@@ -35,15 +35,15 @@
                 <div class="menu-title">Orderan</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Masuk</a>
+                <li> <a href="{{route('editor.pesanan')}}"><i class="bx bx-right-arrow-alt"></i>Masuk</a>
                 </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Diproses</a>
+                <li> <a href="{{route('editor.pesanan.proses')}}"><i class="bx bx-right-arrow-alt"></i>Diproses</a>
                 </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Dikirim</a>
+                <li> <a href="{{route('editor.pesanan.antar')}}"><i class="bx bx-right-arrow-alt"></i>Dikirim</a>
                 </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Selesai</a>
+                <li> <a href="{{route('editor.pesanan.selesai')}}"><i class="bx bx-right-arrow-alt"></i>Selesai</a>
                 </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Batal</a>
+                <li> <a href="{{route('editor.pesanan.batal')}}"><i class="bx bx-right-arrow-alt"></i>Batal</a>
                 </li>
             </ul>
         </li>

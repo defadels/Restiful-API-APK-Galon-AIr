@@ -96,19 +96,22 @@ Route::prefix('editor')->name('editor.')->middleware('auth','tolakselaineditor')
     Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
 
     Route::get('pesanan','PesananController@index')->name('pesanan');
-    // Route::get('pesanan/{depot}', 'PesananController@store')->name('pesanan.store');
-
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/','PesananController@masuk_edit')->name('pesanan.masuk');
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/show', 'PesananController@masuk_show')->name('pesanan.lihat');
+    Route::put('pesanan/orderan/{orderan}','PesananController@masuk_update')->name('pesanan.update');
+    
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
-    Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
-
+    Route::get('pesanan-proses/orderan/{orderan}/depot/{depot}/show', 'PesananController@proses_show')->name('pesanan.proses.lihat');
+    Route::put('pesanan-proses/orderan/{orderan}','PesananController@proses_update')->name('pesanan.proses.update');
+    
     Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
     Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
-
+    
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
     Route::put('pesanan-batal/{orderan}', 'PesananController@batalkan')->name('pesanan.batalkan');
-
-    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');
-    Route::get('pesanan-selesai/{pesanan}','PesanController@selesaikan')->name('pesanan.selesaikan');
+    
+    Route::get('pesanan-selesai','PesananController@selesai')->name('pesanan.selesai');
+    Route::put('pesanan-selesai/{orderan}', 'PesananController@selesaikan')->name('pesanan.selesaikan');
 });
 
 Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->namespace('User')->group(function() {
@@ -129,18 +132,27 @@ Route::prefix('user')->name('user.')->middleware('auth','tolakselainuser')->name
 Route::prefix('depot')->name('depot.')->middleware('auth','tolakselaindepot')->namespace('Depot')->group(function(){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 
+    Route::get('profile/show/{profile}', 'ProfileController@show')->name('profile.show');
+    Route::get('profile/{profile}', 'ProfileController@edit')->name('profile.edit');
+    Route::put('profile/{profile}', 'ProfileController@update')->name('profile.update');
+
     Route::get('pesanan','PesananController@index')->name('pesanan');
-    // Route::get('pesanan/{depot}', 'PesananController@store')->name('pesanan.store');
-
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/','PesananController@masuk_edit')->name('pesanan.masuk');
+    Route::get('pesanan/orderan/{orderan}/depot/{depot}/show', 'PesananController@masuk_show')->name('pesanan.lihat');
+    Route::put('pesanan/orderan/{orderan}','PesananController@masuk_update')->name('pesanan.update');
+    
     Route::get('pesanan-proses','PesananController@proses')->name('pesanan.proses');
-    Route::get('pesanan-proses/{depot}','PesananController@diproses')->name('pesanan.diproses');
-
+    Route::get('pesanan-proses/orderan/{orderan}/depot/{depot}/show', 'PesananController@proses_show')->name('pesanan.proses.lihat');
+    Route::put('pesanan-proses/orderan/{orderan}','PesananController@proses_update')->name('pesanan.proses.update');
+    
     Route::get('pesanan-diantar','PesananController@antar')->name('pesanan.antar');
     Route::get('pesanan-diantar/{depot}','PesananController@diantar')->name('pesanan.diantar');
-
+    
     Route::get('pesanan-batal','PesananController@batal')->name('pesanan.batal');
-
-    Route::get('pesanan-selesai','PesanController@selesai')->name('pesanan.selesai');
+    Route::put('pesanan-batal/{orderan}', 'PesananController@batalkan')->name('pesanan.batalkan');
+    
+    Route::get('pesanan-selesai','PesananController@selesai')->name('pesanan.selesai');
+    Route::put('pesanan-selesai/{orderan}', 'PesananController@selesaikan')->name('pesanan.selesaikan');
 });
 
 Auth::routes(['verify' => true]);

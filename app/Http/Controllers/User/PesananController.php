@@ -56,5 +56,25 @@ class PesananController extends Controller
         ->with('message',__('pesan.create', ['module' => $pesanan->no_transaksi]));
     }
 
+    public function batalkan(Request $request, Pesanan $orderan){
+        $input = $request->all();
+
+        $rules = [
+            'status' => 'nullable'
+        ];
+
+        $message = [
+            'status.nullable' => 'Status wajib diisi',
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        $orderan->status = 'batal';
+
+        $orderan->save();
+        
+        return redirect()->route('user.pesanan')
+        ->with('message',__('pesan.batal', ['module' => $orderan->no_transaksi]));
+    }
 
 }
