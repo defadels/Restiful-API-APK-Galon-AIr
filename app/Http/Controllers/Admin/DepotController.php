@@ -70,8 +70,8 @@ class DepotController extends Controller
             'email' => ['required','unique:users,email'],
             'password' => ['required'],
             'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13'],
-            'harga_ambil' => ['numeric','required','min:0'],
-            'harga_jemput' => ['numeric','required','min:0'],
+            'harga_ambil' => ['string','required','min:0'],
+            'harga_jemput' => ['string','required','min:0'],
             'foto' => ['file','mimes:jpeg,png','max:10240']
         ];
 
@@ -84,9 +84,9 @@ class DepotController extends Controller
             'nomor_hp.regex' => 'Format nomor handphone salah. Contoh: 082273318016',
             'nomor_hp.max' => 'Nomor handphone maksimal 13 digit',  
             'harga_ambil.required' => 'Harga ambil harus terisi',
-            'harga_ambil.numeric' => 'Harga ambil harus bernilai angka',
+            'harga_ambil.string' => 'Harga ambil harus bernilai angka',
             'harga_jemput.required' => 'Harga jemput harus terisi',
-            'harga_jemput.numeric' => 'Harga jemput harus bernilai angka',
+            'harga_jemput.string' => 'Harga jemput harus bernilai angka',
             'foto.file' => 'Logo harus berupa file gambar',
             'foto.mimes' => 'Gambar logo harus berformat .jpg dan .png',
             'foto.max' => 'Ukuran file logo maksimal 1Mb'
@@ -176,8 +176,8 @@ class DepotController extends Controller
             'nama' => ['required','max:50'],
             'email' => ['required','unique:users,email,'.$depot->id],
             'nomor_hp' => ['required', 'regex:/^(^\+628\s?|^08)(\d{3,4}?){2}\d{2,4}$/','max:13'],
-            'harga_ambil' => ['numeric','required','min:0'],
-            'harga_jemput' => ['numeric','required','min:0'],
+            'harga_ambil' => ['string','required','min:0'],
+            'harga_jemput' => ['string','required','min:0'],
             'foto' => ['file','mimes:jpeg,png','max:10240']
         ];
 

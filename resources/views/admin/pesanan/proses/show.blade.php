@@ -98,15 +98,45 @@
                             <div class="form-group">
                                 <button type="button" class="btn btn-sm btn-secondary" onclick="window.history.back()">Kembali</button>
                                 <input type="submit" value="{{$button}}" class="btn btn-sm btn-primary">
+                            </form>
+
+                                <button type="button" data-toggle="modal" data-target="#deleteModal" class="btn btn-sm btn-danger">
+                                    <i class="bx bx-block"></i> Batalkan</button> 
                             </div>
 
-                        </form>
 						
 						</div>
 					</div>
 
 				</div>
 			</div>
+
+            <!-- modal -->
+            <div class="modal fade" id="deleteModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Kamu membatalkan orderan ini?
+                            </p>  
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('admin.pesanan.batalkan', $orderan->id ?? '') }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-sm btn-danger" type="submit">
+                            <i class="bx bx-trash"></i>    
+                            Batal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             
 @endsection

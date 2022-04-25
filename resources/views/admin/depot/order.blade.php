@@ -72,7 +72,7 @@
                             
                             <div class="form-group">
                                 <label for="total">Harga</label>
-                                <input type="number" name="total" value="" class="form-control @error('total') {{ 'is-invalid' }} @enderror" id="total" readonly>
+                                <input type="text" name="total" value="" class="form-control @error('total') {{ 'is-invalid' }} @enderror" id="total" readonly>
                                 @error('total')
                                 
                                 <span class="text-danger">
@@ -84,7 +84,7 @@
                             
                             <div class="form-group">
                                 <label for="jumlah">Jumlah Pesan</label>
-                                <input type="number" name="jumlah" value="{{old('jumlah') ?? $depot->jumlah ?? ''}}" class="form-control @error('jumlah') {{ 'is-invalid' }} @enderror" id="jumlah">
+                                <input type="text" name="jumlah" value="{{old('jumlah') ?? $depot->jumlah ?? ''}}" class="form-control @error('jumlah') {{ 'is-invalid' }} @enderror" id="jumlah">
                                 @error('jumlah')
                                 
                                 <span class="text-danger">
@@ -96,7 +96,7 @@
                             
                             <div class="form-group">
                                 <label for="total_harga">Total Harga</label>
-                                <input type="number" name="total_harga" value="{{old('total_harga') ?? $depot->total_harga ?? ''}}" class="form-control @error('total_harga') {{ 'is-invalid' }} @enderror" id="total_harga" readonly>
+                                <input type="text" name="total_harga" value="{{old('total_harga') ?? $depot->total_harga ?? ''}}" class="form-control @error('total_harga') {{ 'is-invalid' }} @enderror" id="total_harga" readonly>
                                 @error('total_harga')
                                     
                                     <span class="text-danger">

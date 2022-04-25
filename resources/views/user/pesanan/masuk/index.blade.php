@@ -23,7 +23,7 @@
 						</div>
 						<div class="ml-auto">
 							<div class="btn-group">
-								<a href="{{route('admin.depot')}}" class="btn btn-primary">+ Order</a> 
+								<a href="{{route('user.depot')}}" class="btn btn-primary">+ Order</a> 
 							</div>
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 									<thead>
 										<tr>
 											<th scope="col">Tanggal</th>
-											<th scope="col">Nama Pelanggan</th>
+											<th scope="col">Nomor Transaksi</th>
 											<th scope="col">Total Harga</th>
                                             <th scope="col">Status</th>
 											<th scope="col">Aksi</th>
@@ -51,10 +51,26 @@
 
 										<tr>
 											<th style="max-width:70px;" scope="row">{{$order->tanggal}}</th>
-											<td>{{$order->dibuat->nama}}</td>
+											<td>{{$order->no_transaksi}}</td>
 											<td>Rp.{{number_format($order->total_harga)}}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-success">{{$order->status}}</button></td>
+                                                <button class="btn btn-sm 
+												@if($order->status == 'masuk')
+												btn-primary
+												@endif
+												@if($order->status == 'diproses')
+												btn-warning
+												@endif
+												@if($order->status == 'dikirim')
+												btn-warning
+												@endif
+												@if($order->status == 'batal')
+												btn-danger
+												@endif
+												@if($order->status == 'selesai')
+												btn-success
+												@endif
+												">{{$order->status}}</button></td>
 											<td>
                                                 <a href="{{route('admin.depot.orderan', $order->id)}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
 												<a href="{{route('admin.depot.edit', $order->id)}}" title="Batal" class="btn btn-sm btn-danger"><i class="bx bx-block"></i></a>

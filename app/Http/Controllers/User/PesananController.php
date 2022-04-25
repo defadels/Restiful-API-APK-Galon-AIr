@@ -15,7 +15,7 @@ use Auth;
 class PesananController extends Controller
 {
     public function index() {
-        $orderan = Pesanan::where('status','masuk')->where('dibuat_oleh_id', Auth::user()->id)->paginate(10);
+        $orderan = Pesanan::where('dibuat_oleh_id', Auth::user()->id)->paginate(10);
 
         $description = "Daftar orderan yang masuk";
 

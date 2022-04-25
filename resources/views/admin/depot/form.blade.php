@@ -72,7 +72,7 @@
                             
                             <div class="form-group">
                                 <label for="harga_ambil">Harga Ambil</label>
-                                <input type="number" name="harga_ambil" value="{{old('harga_ambil') ?? $depot->harga_ambil ?? ''}}" class="form-control @error('harga_ambil') {{ 'is-invalid' }} @enderror" id="">
+                                <input type="text" name="harga_ambil" value="{{old('harga_ambil') ?? $depot->harga_ambil ?? ''}}" class="form-control @error('harga_ambil') {{ 'is-invalid' }} @enderror" id="">
                                 @error('harga_ambil')
                                 
                                 <span class="text-danger">
@@ -84,7 +84,7 @@
                             
                             <div class="form-group">
                                 <label for="harga_jemput">Harga Jemput</label>
-                                <input type="number" name="harga_jemput" value="{{old('harga_jemput') ?? $depot->harga_jemput ?? ''}}" class="form-control @error('harga_jemput') {{ 'is-invalid' }} @enderror" id="">
+                                <input type="text" name="harga_jemput" value="{{old('harga_jemput') ?? $depot->harga_jemput ?? ''}}" class="form-control @error('harga_jemput') {{ 'is-invalid' }} @enderror" id="">
                                 @error('harga_jemput')
                                 
                                 <span class="text-danger">

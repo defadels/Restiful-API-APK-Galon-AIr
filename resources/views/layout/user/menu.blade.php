@@ -29,24 +29,15 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;" class="has-arrow">
+           
+            <a href="{{ route('user.pesanan') }}">
                 <div class="parent-icon icon-color-6"><i class="bx bx-cart"></i>
                 </div>
-                <div class="menu-title">Orderan</div>
+                <div class="menu-title">Orderanku</div>
             </a>
-            <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Masuk</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Diproses</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Dikirim</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Selesai</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Batal</a>
-                </li>
-            </ul>
+      
         </li>
+        
     
         <li class="menu-label">Lainnya</li>
         <li>

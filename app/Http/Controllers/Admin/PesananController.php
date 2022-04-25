@@ -72,7 +72,7 @@ class PesananController extends Controller
         ]);
 
         return redirect()->route('admin.pesanan')
-        ->with('message',__('pesan.create', ['module' => $pesanan->no_transaksi]));
+        ->with('message',__('pesan.masuk', ['module' => $pesanan->no_transaksi]));
     }
 
     public function masuk_update(Request $request, Pesanan $orderan) {
@@ -96,7 +96,7 @@ class PesananController extends Controller
         $orderan->save();
         
         return redirect()->route('admin.pesanan.proses')
-        ->with('message',__('pesan.update', ['module' => $orderan->no_transaksi]));
+        ->with('message',__('pesan.proses', ['module' => $orderan->no_transaksi]));
     }
 
     public function proses() {
@@ -138,16 +138,22 @@ class PesananController extends Controller
             $orderan->status = 'selesai';
             $rute = 'selesai';
 
+            $orderan->save();
+        
+            return redirect()->route('admin.pesanan.'.$rute)
+            ->with('message',__('pesan.selesai', ['module' => $orderan->no_transaksi]));
+
         } else if($orderan->total == $orderan->depot->harga_jemput) {
 
             $orderan->status = 'dikirim';
             $rute = 'antar';
-        }
 
-        $orderan->save();
+            $orderan->save();
         
-        return redirect()->route('admin.pesanan.'.$rute)
-        ->with('message',__('pesan.update', ['module' => $orderan->no_transaksi]));
+            return redirect()->route('admin.pesanan.'.$rute)
+            ->with('message',__('pesan.antar', ['module' => $orderan->no_transaksi]));
+        }
+        
     }
 
     public function antar() {
@@ -156,6 +162,27 @@ class PesananController extends Controller
         $description = "Daftar orderan yang dikirim";
 
         return view('admin.pesanan.dikirim.index',compact('orderan','description'));
+    }
+
+    public function batalkan(Request $request, Pesanan $orderan){
+        $input = $request->all();
+
+        $rules = [
+            'status' => 'nullable'
+        ];
+
+        $message = [
+            'status.nullable' => 'Status wajib diisi',
+        ];
+
+        $validate = Validator::make($input, $rules, $message)->validate();
+
+        $orderan->status = 'batal';
+
+        $orderan->save();
+        
+        return redirect()->route('admin.pesanan.batal')
+        ->with('message',__('pesan.batal', ['module' => $orderan->no_transaksi]));
     }
 
     public function batal() {

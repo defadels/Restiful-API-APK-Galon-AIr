@@ -51,12 +51,11 @@
 
 										<tr>
 											<th style="max-width:70px;" scope="row">{{$order->tanggal}}</th>
-											<td>{{$order->pelanggan->nama}}</td>
+											<td>{{$order->dibuat->nama}}</td>
 											<td>{{$order->total_harga}}</td>
-                                            <td>{{$order->status}}</td>
+                                            <td> <button class="btn btn-sm btn-danger">{{$order->status}}</button> </td>
 											<td>
-												<a href="{{route('admin.depot.edit', $order->id)}}" title="Edit data" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
-												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-cart"></i></a>
+												<a href="{{route('admin.depot.orderan', $order->id)}}" title="Order" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
 											</td>
 										</tr>
 										@endforeach

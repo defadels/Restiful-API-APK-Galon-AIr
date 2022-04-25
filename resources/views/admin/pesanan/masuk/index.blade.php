@@ -58,39 +58,9 @@
 											<td>
 												<a href="{{route('admin.pesanan.lihat', [$order->id, $order->depot_id])}}" title="Lihat" class="btn btn-sm btn-secondary"><i class="bx bx-show"></i></a>
                                                 <a href="{{route('admin.pesanan.masuk', [$order->id, $order->depot_id])}}" title="Edit" class="btn btn-sm btn-success"><i class="bx bx-edit"></i></a>
-												<button data-toggle="modal" data-target="#deleteModal" title="Batal" class="btn btn-sm btn-danger"><i class="bx bx-block"></i></button>
 											</td>
 										</tr>
 
-										<!-- modal -->
-								<div class="modal fade" id="deleteModal">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5>Batal orderan</h5>
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-											</div>
-											<div class="modal-body">
-												<strong>{{$order->no_transaksi}} atas nama {{$order->dibuat->nama}}</strong>
-												<br>
-												<br>
-												<p>
-													Kamu yakin membatalkan orderan ini?
-												</p>  
-											</div>
-											<div class="modal-footer">
-												<form action="{{ route('admin.pesanan.batal', $depot->id ?? '') }}" method="post">
-												@csrf
-												@method('put')
-												<button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-												<button class="btn btn-sm btn-danger" type="submit">
-												<i class="bx bx-block"></i>    
-												Batalkan</button>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
 										@endforeach
 									</tbody>
 								</table>
